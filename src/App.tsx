@@ -292,7 +292,7 @@ function App() {
             <div className="hero-avatar">
               <div className="avatar-container">
                 <div className="avatar-image">
-                  <div className="avatar-placeholder">👨‍💻</div>
+                  <img src="/avatar.png" alt="Avatar" className="avatar-photo" />
                 </div>
                 <div className="avatar-ring"></div>
                 <div className="tech-orbit">
