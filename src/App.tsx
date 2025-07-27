@@ -27,6 +27,7 @@ function App() {
   const [currentPersonFrame, setCurrentPersonFrame] = useState<number>(1);
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [scrollEventCounter, setScrollEventCounter] = useState<number>(0);
 
   
   // Contact form submission handler
@@ -79,17 +80,23 @@ function App() {
         clearTimeout(scrollTimeout);
       }
       
-      // Cycle through walking frames (person2-person6) every few scroll events
-      setCurrentPersonFrame(prev => {
-        if (prev === 1) return 2; // Start walking from frame 2
-        if (prev >= 6) return 2; // Reset to frame 2 after frame 6
-        return prev + 1;
-      });
+      // Increment scroll counter
+      setScrollEventCounter(prev => prev + 1);
+      
+      // Only change frame every 3 scroll events (adjust this number to make walking faster/slower)
+      if (scrollEventCounter % 3 === 0) {
+        setCurrentPersonFrame(prev => {
+          if (prev === 1) return 2; // Start walking from frame 2
+          if (prev >= 6) return 2; // Reset to frame 2 after frame 6
+          return prev + 1;
+        });
+      }
       
       // Set timeout to stop walking animation
       const newTimeout = setTimeout(() => {
         setIsScrolling(false);
         setCurrentPersonFrame(1); // Reset to idle frame
+        setScrollEventCounter(0); // Reset counter when stopping
       }, 200); // Stop animation 200ms after scrolling stops
       
       setScrollTimeout(newTimeout);
@@ -102,7 +109,7 @@ function App() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollTimeout]);
+  }, [scrollTimeout, scrollEventCounter]);
 
 
 
