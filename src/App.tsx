@@ -30,7 +30,85 @@ function App() {
   const [scrollEventCounter, setScrollEventCounter] = useState<number>(0);
   const [lastScrollTop, setLastScrollTop] = useState<number>(0);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+  const [pausedElements, setPausedElements] = useState<Set<string>>(new Set());
 
+  // Auto-scroll for content cards
+  useEffect(() => {
+    const scrollableElements = [
+      { selector: '.projects-list', speed: 1 },
+      { selector: '.skills-categories', speed: 0.8 }, 
+      { selector: '.timeline', speed: 0.6 }
+    ];
+
+    // Add hover event listeners to each scrollable element
+    const eventListeners: Array<{ element: HTMLElement; enter: () => void; leave: () => void }> = [];
+    
+    scrollableElements.forEach(({ selector }) => {
+      const element = document.querySelector(selector) as HTMLElement;
+      const parentCard = element?.closest('.content-card') as HTMLElement;
+      
+      if (element && parentCard) {
+        const handleMouseEnter = () => {
+          setPausedElements(prev => new Set(prev).add(selector));
+        };
+        
+        const handleMouseLeave = () => {
+          setPausedElements(prev => {
+            const newSet = new Set(prev);
+            newSet.delete(selector);
+            return newSet;
+          });
+        };
+
+        parentCard.addEventListener('mouseenter', handleMouseEnter);
+        parentCard.addEventListener('mouseleave', handleMouseLeave);
+        
+        eventListeners.push({
+          element: parentCard,
+          enter: handleMouseEnter,
+          leave: handleMouseLeave
+        });
+      }
+    });
+
+    const autoScrollCards = () => {
+      scrollableElements.forEach(({ selector, speed }) => {
+        const element = document.querySelector(selector) as HTMLElement;
+        
+        // Skip if this element is paused (hovered)
+        if (element && !pausedElements.has(selector)) {
+          const scrollStep = speed; // pixels per step
+          const maxScroll = element.scrollHeight - element.clientHeight;
+          
+          if (maxScroll <= 0) return; // Skip if no scrollable content
+          
+          if (element.scrollTop >= maxScroll) {
+            // Pause at bottom for 2 seconds, then reset
+            setTimeout(() => {
+              if (!pausedElements.has(selector)) {
+                element.scrollTop = 0;
+              }
+            }, 2000);
+          } else {
+            // Scroll down gradually
+            element.scrollTop += scrollStep;
+          }
+        }
+      });
+    };
+
+    // Auto-scroll every 50ms (20 FPS for smooth animation)
+    const interval = setInterval(autoScrollCards, 50);
+
+    return () => {
+      clearInterval(interval);
+      // Clean up hover listeners
+      eventListeners.forEach(({ element, enter, leave }) => {
+        element.removeEventListener('mouseenter', enter);
+        element.removeEventListener('mouseleave', leave);
+      });
+    };
+  }, [pausedElements]);
   
   // Contact form submission handler
   const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
