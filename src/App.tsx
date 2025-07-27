@@ -767,7 +767,7 @@ function App() {
                 transform: `translateY(${characterJump}px) ${scrollDirection === 'up' ? 'scaleX(-1)' : ''}` 
               }}>
            <img 
-             src={`/person/person${currentPersonFrame}.png`} 
+             src={`${process.env.PUBLIC_URL}/person/person${currentPersonFrame}.png`} 
              alt="Person Character" 
              className="person-sprite" 
            />
