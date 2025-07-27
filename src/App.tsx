@@ -30,6 +30,32 @@ function App() {
   const [scrollEventCounter, setScrollEventCounter] = useState<number>(0);
   const [lastScrollTop, setLastScrollTop] = useState<number>(0);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+  
+  // Chat bubble state
+  const [showChatBubble, setShowChatBubble] = useState<boolean>(false);
+  const [currentChatIndex, setCurrentChatIndex] = useState<number>(0);
+  
+  const chatMessages = [
+    "Hey there! I'm Junre, welcome to my interactive portfolio! 🌟",
+    "Scroll around to explore different sections and discover my journey! 🚀", 
+    "I love building scalable systems and leading amazing teams! 💼",
+    "Born and raised in beautiful Cebu City, Philippines! 🇵🇭",
+    "From BSIT student at University of Cebu to CTO - what a journey! 🎓",
+    "Currently CTO at Vananaz Technologies Inc. - living the dream! 🚀",
+    "June 17, 1997 - that's when the adventure began! 🎂",
+    "Cebu City shaped me, but technology gave me wings! ✈️",
+    "University of Cebu taught me the basics, experience taught me everything else! 📚",
+    "From island life in Cebu to leading tech teams - the journey continues! 🏝️",
+    "CTO by day, lifelong learner by night! Never stop growing! 🌱",
+    "Building the future, one line of code at a time! 💻",
+    "Proud Cebuano techie making waves in the digital world! 🌊",
+    "Leadership isn't about being in charge, it's about taking care of those in your charge! 👥",
+    "Every bug is a lesson, every feature is an opportunity! 🐛➡️✨",
+    "From junior developer to CTO - proof that persistence pays off! 💪",
+    "Technology changes, but passion for innovation remains constant! 🔥",
+    "Cebu City will always be home, but the cloud is my office! ☁️",
+    "Click me to see more of my thoughts! 💭"
+  ];
   const [pausedElements, setPausedElements] = useState<Set<string>>(new Set());
 
   // Auto-scroll for content cards
@@ -139,6 +165,22 @@ function App() {
     setActiveSection(sectionId);
   };
 
+  // Random message picker function
+  const getRandomMessage = () => {
+    const randomIndex = Math.floor(Math.random() * chatMessages.length);
+    setCurrentChatIndex(randomIndex);
+  };
+
+  // Show initial chat bubble on page load
+  useEffect(() => {
+    const initialChatTimeout = setTimeout(() => {
+      getRandomMessage(); // Pick random message
+      setShowChatBubble(true);
+    }, 2000); // Show initial chat bubble after 2 seconds
+    
+    return () => clearTimeout(initialChatTimeout);
+  }, []);
+
   // Mouse tracking and scroll-based 3D animation
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -159,6 +201,9 @@ function App() {
       
       // Walking animation logic
       setIsScrolling(true);
+      
+      // Hide chat bubble when scrolling starts
+      setShowChatBubble(false);
       
       // Clear existing timeout
       if (scrollTimeout) {
@@ -182,6 +227,12 @@ function App() {
         setIsScrolling(false);
         setCurrentPersonFrame(1); // Reset to idle frame
         setScrollEventCounter(0); // Reset counter when stopping
+        
+        // Show chat bubble when character becomes idle
+        setTimeout(() => {
+          getRandomMessage(); // Pick random message
+          setShowChatBubble(true);
+        }, 500); // Show chat bubble 500ms after stopping
       }, 200); // Stop animation 200ms after scrolling stops
       
       setScrollTimeout(newTimeout);
@@ -772,6 +823,20 @@ function App() {
              className="person-sprite" 
            />
          </div>
+         
+         {/* Chat Bubble - positioned independently */}
+         {showChatBubble && !isScrolling && (
+           <div 
+             className="chat-bubble" 
+             onClick={getRandomMessage}
+           >
+             <div className="chat-bubble-content">
+               {chatMessages[currentChatIndex]}
+             </div>
+             <div className="chat-bubble-tail"></div>
+             <div className="chat-bubble-hint">Click to change message</div>
+           </div>
+         )}
                   
 
                   </div>
