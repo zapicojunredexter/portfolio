@@ -51,8 +51,8 @@ function App() {
 
   const textsToType = [
     "Building scalable systems and guiding technical teams",
-    "Full-stack developer with a passion for system architecture and team leadership.",
-    "Currently scaling technology as CTO while staying hands-on with code."
+    "Software Development Manager with extensive experience in system architecture and solution management.",
+    "I view myself as a work in progress at all times. My main objective is to never stop learning."
   ];
 
 
@@ -258,42 +258,42 @@ function App() {
              </div>
              <div className="card-content">
                <div className="about-intro">
-                 <h4>Full-Stack Developer & Tech Leader</h4>
-                 <div className="experience-badge">5+ Years Experience</div>
+                 <h4>Software Development Manager</h4>
+                 <div className="experience-badge">Vananaz Technologies</div>
                </div>
                <div className="qualities-grid">
                  <div className="quality-item">
-                   <span className="quality-icon">🎯</span>
+                   <span className="quality-icon">🏗️</span>
                    <div>
-                     <strong>Problem Solver</strong>
-                     <p>Building scalable solutions that matter</p>
+                     <strong>System Architecture</strong>
+                     <p>Designing scalable software solutions</p>
                    </div>
                  </div>
                  <div className="quality-item">
-                   <span className="quality-icon">🚀</span>
+                   <span className="quality-icon">⚙️</span>
                    <div>
-                     <strong>Innovation Driver</strong>
-                     <p>Passionate about clean code & modern tech</p>
+                     <strong>Solution Management</strong>
+                     <p>End-to-end software solution oversight</p>
                    </div>
                  </div>
                  <div className="quality-item">
-                   <span className="quality-icon">🌱</span>
+                   <span className="quality-icon">🔄</span>
                    <div>
-                     <strong>Lifelong Learner</strong>
-                     <p>Always exploring cutting-edge technologies</p>
+                     <strong>CI/CD Expert</strong>
+                     <p>Continuous integration & delivery practices</p>
                    </div>
                  </div>
                  <div className="quality-item">
-                   <span className="quality-icon">🎨</span>
+                   <span className="quality-icon">👥</span>
                    <div>
-                     <strong>UX Advocate</strong>
-                     <p>Creating user-centered experiences</p>
+                     <strong>Team Leadership</strong>
+                     <p>From Software Engineer to Development Manager</p>
                    </div>
                  </div>
                </div>
                <div className="quote-section">
                  <div className="quote-mark">"</div>
-                 <p className="quote-text">Code is poetry in motion</p>
+                 <p className="quote-text">Never stop learning - always work in progress</p>
                  <div className="quote-mark">"</div>
                </div>
              </div>
@@ -309,57 +309,57 @@ function App() {
                <div className="projects-list">
                  <div className="project-item">
                    <div className="project-header">
-                     <span className="project-icon">🛒</span>
-                     <h4>E-Commerce Platform</h4>
-                     <div className="project-status success">Live</div>
-                   </div>
-                   <div className="project-details">
-                     <div className="tech-stack">
-                       <span className="tech-tag">React</span>
-                       <span className="tech-tag">Node.js</span>
-                       <span className="tech-tag">PostgreSQL</span>
-                     </div>
-                     <div className="project-metrics">
-                       <span className="metric">👥 50K+ users</span>
-                       <span className="metric">⚡ 99.9% uptime</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="project-item">
-                   <div className="project-header">
-                     <span className="project-icon">🤖</span>
-                     <h4>AI Analytics Dashboard</h4>
-                     <div className="project-status beta">Beta</div>
-                   </div>
-                   <div className="project-details">
-                     <div className="tech-stack">
-                       <span className="tech-tag">Python</span>
-                       <span className="tech-tag">TensorFlow</span>
-                       <span className="tech-tag">AWS</span>
-                     </div>
-                     <div className="project-metrics">
-                       <span className="metric">📊 Real-time analytics</span>
-                       <span className="metric">🔮 ML predictions</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="project-item">
-                   <div className="project-header">
-                     <span className="project-icon">🏗️</span>
-                     <h4>Microservices Platform</h4>
+                     <span className="project-icon">🏢</span>
+                     <h4>Enterprise Web Application</h4>
                      <div className="project-status success">Production</div>
                    </div>
                    <div className="project-details">
                      <div className="tech-stack">
-                       <span className="tech-tag">Docker</span>
-                       <span className="tech-tag">Kubernetes</span>
-                       <span className="tech-tag">API Gateway</span>
+                       <span className="tech-tag">React.js</span>
+                       <span className="tech-tag">Node.js</span>
+                       <span className="tech-tag">MySQL</span>
                      </div>
                      <div className="project-metrics">
-                       <span className="metric">🚀 10M+ requests/day</span>
-                       <span className="metric">⚡ Auto-scaling</span>
+                       <span className="metric">🏗️ Scalable architecture</span>
+                       <span className="metric">⚡ High performance</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="project-item">
+                   <div className="project-header">
+                     <span className="project-icon">☁️</span>
+                     <h4>Cloud Infrastructure System</h4>
+                     <div className="project-status success">Live</div>
+                   </div>
+                   <div className="project-details">
+                     <div className="tech-stack">
+                       <span className="tech-tag">AWS</span>
+                       <span className="tech-tag">Firebase</span>
+                       <span className="tech-tag">Cloud Firestore</span>
+                     </div>
+                     <div className="project-metrics">
+                       <span className="metric">🔄 CI/CD pipeline</span>
+                       <span className="metric">📊 Real-time data</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="project-item">
+                   <div className="project-header">
+                     <span className="project-icon">🔧</span>
+                     <h4>REST API Framework</h4>
+                     <div className="project-status success">Production</div>
+                   </div>
+                   <div className="project-details">
+                     <div className="tech-stack">
+                       <span className="tech-tag">Django REST</span>
+                       <span className="tech-tag">Express.js</span>
+                       <span className="tech-tag">Spring Framework</span>
+                     </div>
+                     <div className="project-metrics">
+                       <span className="metric">🔌 RESTful APIs</span>
+                       <span className="metric">⚡ Optimized performance</span>
                      </div>
                    </div>
                  </div>
@@ -367,18 +367,18 @@ function App() {
                  <div className="project-item">
                    <div className="project-header">
                      <span className="project-icon">📱</span>
-                     <h4>Mobile Banking App</h4>
+                     <h4>Cross-Platform Mobile App</h4>
                      <div className="project-status success">Live</div>
                    </div>
                    <div className="project-details">
                      <div className="tech-stack">
                        <span className="tech-tag">React Native</span>
-                       <span className="tech-tag">Redux</span>
+                       <span className="tech-tag">TypeScript</span>
                        <span className="tech-tag">Firebase</span>
                      </div>
                      <div className="project-metrics">
-                       <span className="metric">💳 500K+ transactions</span>
-                       <span className="metric">🔒 Bank-grade security</span>
+                       <span className="metric">📲 Cross-platform</span>
+                       <span className="metric">⚡ Native performance</span>
                      </div>
                    </div>
                  </div>
@@ -386,18 +386,18 @@ function App() {
                  <div className="project-item">
                    <div className="project-header">
                      <span className="project-icon">🌐</span>
-                     <h4>Global CDN Solution</h4>
-                     <div className="project-status beta">Scaling</div>
+                     <h4>Full-Stack Web Platform</h4>
+                     <div className="project-status beta">Development</div>
                    </div>
                    <div className="project-details">
                      <div className="tech-stack">
-                       <span className="tech-tag">Edge Computing</span>
-                       <span className="tech-tag">CloudFlare</span>
-                       <span className="tech-tag">Redis</span>
+                       <span className="tech-tag">Vue.js</span>
+                       <span className="tech-tag">PHP</span>
+                       <span className="tech-tag">Laravel</span>
                      </div>
                      <div className="project-metrics">
-                       <span className="metric">🌍 15+ global regions</span>
-                       <span className="metric">⚡ &lt;50ms latency</span>
+                       <span className="metric">🔧 Full-stack solution</span>
+                       <span className="metric">⚡ Modern framework</span>
                      </div>
                    </div>
                  </div>
@@ -415,13 +415,27 @@ function App() {
                <div className="skills-categories">
                  <div className="skill-category">
                    <div className="category-header">
+                     <span className="category-icon">💼</span>
+                     <h4>Leadership & Management</h4>
+                   </div>
+                   <div className="skill-tags">
+                     <span className="skill-tag management">Solution Management</span>
+                     <span className="skill-tag architecture">System Architecture</span>
+                     <span className="skill-tag cicd">CI/CD</span>
+                   </div>
+                 </div>
+                 
+                 <div className="skill-category">
+                   <div className="category-header">
                      <span className="category-icon">🎨</span>
                      <h4>Frontend</h4>
                    </div>
                    <div className="skill-tags">
-                     <span className="skill-tag react">React</span>
+                     <span className="skill-tag react">React.js</span>
+                     <span className="skill-tag reactnative">React Native</span>
+                     <span className="skill-tag vue">Vue.js</span>
+                     <span className="skill-tag angular">AngularJS</span>
                      <span className="skill-tag ts">TypeScript</span>
-                     <span className="skill-tag next">Next.js</span>
                    </div>
                  </div>
                  
@@ -432,8 +446,12 @@ function App() {
                    </div>
                    <div className="skill-tags">
                      <span className="skill-tag node">Node.js</span>
-                     <span className="skill-tag python">Python</span>
-                     <span className="skill-tag go">Go</span>
+                     <span className="skill-tag php">PHP</span>
+                     <span className="skill-tag laravel">Laravel</span>
+                     <span className="skill-tag django">Django REST</span>
+                     <span className="skill-tag express">Express.js</span>
+                     <span className="skill-tag spring">Spring Framework</span>
+                     <span className="skill-tag java">Java</span>
                    </div>
                  </div>
                  
@@ -444,20 +462,21 @@ function App() {
                    </div>
                    <div className="skill-tags">
                      <span className="skill-tag aws">AWS</span>
-                     <span className="skill-tag docker">Docker</span>
-                     <span className="skill-tag k8s">Kubernetes</span>
+                     <span className="skill-tag firebase">Firebase</span>
+                     <span className="skill-tag firestore">Cloud Firestore</span>
+                     <span className="skill-tag git">Git</span>
                    </div>
                  </div>
                  
                  <div className="skill-category">
                    <div className="category-header">
                      <span className="category-icon">💾</span>
-                     <h4>Database</h4>
+                     <h4>Database & Tools</h4>
                    </div>
                    <div className="skill-tags">
-                     <span className="skill-tag postgres">PostgreSQL</span>
-                     <span className="skill-tag mongo">MongoDB</span>
-                     <span className="skill-tag redis">Redis</span>
+                     <span className="skill-tag mysql">MySQL</span>
+                     <span className="skill-tag sql">SQL</span>
+                     <span className="skill-tag scripts">Google Apps Script</span>
                    </div>
                  </div>
                </div>
@@ -480,14 +499,14 @@ function App() {
                    <div className="timeline-dot"></div>
                    <div className="timeline-content">
                      <div className="job-header">
-                       <h4>Senior Developer</h4>
-                       <span className="company">@ TechCorp</span>
-                       <span className="duration">2022 - Present</span>
+                       <h4>Software Development Manager</h4>
+                       <span className="company">@ Vananaz Technologies</span>
+                       <span className="duration">Present</span>
                      </div>
                      <div className="achievements">
-                       <div className="achievement">👥 Led team of 5 developers</div>
-                       <div className="achievement">🏗️ Architected microservices platform</div>
-                       <div className="achievement">📈 Improved system performance 40%</div>
+                       <div className="achievement">🏗️ System architecture & solution management</div>
+                       <div className="achievement">🔄 CI/CD implementation & optimization</div>
+                       <div className="achievement">👥 Leading development teams</div>
                      </div>
                    </div>
                  </div>
@@ -496,14 +515,30 @@ function App() {
                    <div className="timeline-dot"></div>
                    <div className="timeline-content">
                      <div className="job-header">
-                       <h4>Full-Stack Engineer</h4>
-                       <span className="company">@ StartupX</span>
-                       <span className="duration">2020 - 2022</span>
+                       <h4>Development Lead Supervisor</h4>
+                       <span className="company">@ Vananaz Technologies</span>
+                       <span className="duration">Previous Role</span>
                      </div>
                      <div className="achievements">
-                       <div className="achievement">🚀 Built MVP from scratch</div>
-                       <div className="achievement">📊 Scaled to 100K+ users</div>
-                       <div className="achievement">💰 Helped raise $2M Series A</div>
+                       <div className="achievement">☁️ AWS & cloud infrastructure</div>
+                       <div className="achievement">🔧 Technical leadership & mentoring</div>
+                       <div className="achievement">📊 Project oversight & delivery</div>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="timeline-item">
+                   <div className="timeline-dot"></div>
+                   <div className="timeline-content">
+                     <div className="job-header">
+                       <h4>Senior Development Leader</h4>
+                       <span className="company">@ Vananaz Technologies</span>
+                       <span className="duration">Previous Role</span>
+                     </div>
+                     <div className="achievements">
+                       <div className="achievement">🌐 Full-stack development (PHP, Laravel)</div>
+                       <div className="achievement">💾 Database design & optimization (MySQL)</div>
+                       <div className="achievement">🔌 REST API development & integration</div>
                      </div>
                    </div>
                  </div>
@@ -513,13 +548,13 @@ function App() {
                    <div className="timeline-content">
                      <div className="job-header">
                        <h4>Software Engineer</h4>
-                       <span className="company">@ InnovateLab</span>
-                       <span className="duration">2019 - 2020</span>
+                       <span className="company">@ Vananaz Technologies</span>
+                       <span className="duration">Started Career</span>
                      </div>
                      <div className="achievements">
-                       <div className="achievement">🤖 Developed AI-powered features</div>
-                       <div className="achievement">👨‍🏫 Mentored junior developers</div>
-                       <div className="achievement">🏆 Won internal innovation award</div>
+                       <div className="achievement">📱 Mobile app development (React Native)</div>
+                       <div className="achievement">🔧 Version control & collaboration (Git)</div>
+                       <div className="achievement">📝 Google Apps Script automation</div>
                      </div>
                    </div>
                  </div>
