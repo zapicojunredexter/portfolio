@@ -216,6 +216,304 @@ body {
   align-items: center;
   justify-content: center;
   padding: 4rem 3rem;
+  overflow: hidden;
+}
+
+/* Full Page Neural Network Background */
+.neural-network-fullpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+  overflow: hidden;
+}
+
+.network-node {
+  position: absolute;
+  background: rgba(0, 217, 255, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(0, 217, 255, 0.8);
+  backdrop-filter: blur(5px);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  opacity: 0;
+  /* Start all nodes from center (hero avatar area) */
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.network-node.visible {
+  opacity: 1;
+}
+
+@keyframes spawnFromCenter {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    left: 50%;
+    top: 40%;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.network-node:hover {
+  background: rgba(0, 217, 255, 0.2);
+  border-color: rgba(0, 217, 255, 0.6);
+  color: rgba(0, 217, 255, 1);
+  transform: scale(1.1);
+}
+
+/* Individual Node Animations - Each moves across the entire screen */
+.node-react.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveReact 50s linear infinite 1.5s;
+}
+
+.node-nodejs.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveNodejs 60s linear infinite 1.5s;
+}
+
+.node-aws.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveAws 44s linear infinite 1.5s;
+}
+
+.node-docker.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveDocker 56s linear infinite 1.5s;
+}
+
+.node-kubernetes.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveKubernetes 52s linear infinite 1.5s;
+}
+
+.node-python.visible {
+  animation: spawnFromCenter 1s ease-out forwards, movePython 48s linear infinite 1.5s;
+}
+
+.node-microservices.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveMicroservices 64s linear infinite 1.5s;
+}
+
+.node-cicd.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveCicd 54s linear infinite 1.5s;
+}
+
+.node-leadership.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveLeadership 58s linear infinite 1.5s;
+}
+
+.node-architecture.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveArchitecture 62s linear infinite 1.5s;
+}
+
+.node-devops.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveDevops 46s linear infinite 1.5s;
+}
+
+.node-analytics.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveAnalytics 50s linear infinite 1.5s;
+}
+
+.node-scalability.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveScalability 66s linear infinite 1.5s;
+}
+
+.node-apis.visible {
+  animation: spawnFromCenter 1s ease-out forwards, moveApis 42s linear infinite 1.5s;
+}
+
+.node-postgresql.visible {
+  animation: spawnFromCenter 1s ease-out forwards, movePostgresql 68s linear infinite 1.5s;
+}
+
+/* Keyframe animations for each node moving across the screen */
+@keyframes moveReact {
+  0% { left: 50%; top: 40%; }
+  25% { left: 30%; top: 80%; }
+  50% { left: 70%; top: 20%; }
+  75% { left: 90%; top: 60%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveNodejs {
+  0% { left: 50%; top: 40%; }
+  25% { left: 20%; top: 10%; }
+  50% { left: 80%; top: 90%; }
+  75% { left: 10%; top: 70%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveAws {
+  0% { left: 50%; top: 40%; }
+  25% { left: 80%; top: 70%; }
+  50% { left: 10%; top: 50%; }
+  75% { left: 60%; top: 20%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveDocker {
+  0% { left: 50%; top: 40%; }
+  25% { left: 70%; top: 70%; }
+  50% { left: 30%; top: 10%; }
+  75% { left: 90%; top: 80%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveKubernetes {
+  0% { left: 50%; top: 40%; }
+  25% { left: 80%; top: 30%; }
+  50% { left: 90%; top: 85%; }
+  75% { left: 20%; top: 70%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes movePython {
+  0% { left: 50%; top: 40%; }
+  25% { left: 90%; top: 50%; }
+  50% { left: 15%; top: 15%; }
+  75% { left: 10%; top: 80%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveMicroservices {
+  0% { left: 50%; top: 40%; }
+  25% { left: 10%; top: 20%; }
+  50% { left: 80%; top: 90%; }
+  75% { left: 85%; top: 10%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveCicd {
+  0% { left: 50%; top: 40%; }
+  25% { left: 10%; top: 60%; }
+  50% { left: 90%; top: 30%; }
+  75% { left: 30%; top: 85%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveLeadership {
+  0% { left: 50%; top: 40%; }
+  25% { left: 15%; top: 80%; }
+  50% { left: 20%; top: 20%; }
+  75% { left: 85%; top: 60%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveArchitecture {
+  0% { left: 50%; top: 40%; }
+  25% { left: 80%; top: 15%; }
+  50% { left: 15%; top: 70%; }
+  75% { left: 70%; top: 85%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveDevops {
+  0% { left: 50%; top: 40%; }
+  25% { left: 30%; top: 70%; }
+  50% { left: 85%; top: 15%; }
+  75% { left: 5%; top: 85%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveAnalytics {
+  0% { left: 50%; top: 40%; }
+  25% { left: 85%; top: 20%; }
+  50% { left: 15%; top: 80%; }
+  75% { left: 25%; top: 30%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveScalability {
+  0% { left: 50%; top: 40%; }
+  25% { left: 5%; top: 50%; }
+  50% { left: 85%; top: 75%; }
+  75% { left: 80%; top: 25%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes moveApis {
+  0% { left: 50%; top: 40%; }
+  25% { left: 25%; top: 15%; }
+  50% { left: 75%; top: 85%; }
+  75% { left: 15%; top: 65%; }
+  100% { left: 50%; top: 40%; }
+}
+
+@keyframes movePostgresql {
+  0% { left: 50%; top: 40%; }
+  25% { left: 85%; top: 80%; }
+  50% { left: 5%; top: 30%; }
+  75% { left: 65%; top: 60%; }
+  100% { left: 50%; top: 40%; }
+}
+
+/* Network Connections SVG */
+.network-connections-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Dynamic Connection Lines */
+.dynamic-connection {
+  opacity: 0;
+  animation: connectionFadeIn 2s ease-in-out forwards;
+}
+
+.connection-flow {
+  stroke-dashoffset: 0;
+  animation: connectionFlow 16s ease-in-out infinite;
+}
+
+@keyframes connectionFadeIn {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 20;
+  }
+  100% {
+    opacity: 0.6;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes connectionFlow {
+  0%, 100% {
+    opacity: 0.2;
+    stroke-dashoffset: 0;
+  }
+  25% {
+    opacity: 0.6;
+    stroke-dashoffset: -8;
+  }
+  50% {
+    opacity: 0.8;
+    stroke-dashoffset: -16;
+  }
+  75% {
+    opacity: 0.4;
+    stroke-dashoffset: -24;
+  }
+}
+
+/* Ensure hero content stays on top */
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero Avatar */
@@ -1623,6 +1921,16 @@ body {
     font-size: 3rem;
   }
   
+  /* Neural Network Mobile Adjustments */
+  .neural-network-fullpage {
+    opacity: 0.15;
+  }
+  
+  .network-node.visible {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
   .portfolio-section h2 {
     font-size: 2.5rem;
   }
@@ -1714,5 +2022,23 @@ body {
   
   .cursor-glow {
     display: none;
+  }
+  
+  .neural-network-fullpage {
+    opacity: 0.05;
+  }
+  
+  .network-node.visible {
+    animation: none !important;
+    position: relative !important;
+    left: 50% !important;
+    top: 40% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  
+  .dynamic-connection {
+    animation: none !important;
+    opacity: 0.1 !important;
+    stroke-dasharray: none !important;
   }
 }

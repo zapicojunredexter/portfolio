@@ -7,6 +7,13 @@ interface Section {
   active: boolean;
 }
 
+const NODE_ORDER = [
+  'node-react', 'node-nodejs', 'node-aws', 'node-docker', 'node-kubernetes',
+  'node-python', 'node-microservices', 'node-cicd', 'node-leadership',
+  'node-architecture', 'node-devops', 'node-analytics', 'node-scalability',
+  'node-apis', 'node-postgresql'
+];
+
 function App() {
   const [activeSection, setActiveSection] = useState<string>('about');
   const [sections] = useState<Section[]>([
@@ -20,12 +27,16 @@ function App() {
   const [typedText, setTypedText] = useState('');
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
+  const [neuralNetworkLoaded, setNeuralNetworkLoaded] = useState(false);
+  const [visibleNodes, setVisibleNodes] = useState<string[]>([]);
 
   const textsToType = [
     "Building scalable systems and guiding technical teams",
     "Full-stack developer with a passion for system architecture and team leadership.",
     "Currently scaling technology as CTO while staying hands-on with code."
   ];
+
+
 
   const handleSectionChange = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -40,6 +51,104 @@ function App() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  // Staggered node appearance
+  useEffect(() => {
+    let currentIndex = 0;
+    
+    const addNode = () => {
+      if (currentIndex < NODE_ORDER.length) {
+        setVisibleNodes(prev => [...prev, NODE_ORDER[currentIndex]]);
+        currentIndex++;
+      }
+    };
+
+    // Start neural network loading immediately on page load
+    setNeuralNetworkLoaded(true);
+    
+    // Add first node almost immediately
+    const firstNodeTimer = setTimeout(() => {
+      addNode();
+    }, 100);
+    
+    // Add remaining nodes every 2 seconds starting from 2.1 seconds
+    const subsequentTimer = setTimeout(() => {
+      const interval = setInterval(() => {
+        if (currentIndex < NODE_ORDER.length) {
+          addNode();
+        } else {
+          clearInterval(interval);
+        }
+      }, 2000);
+
+      return () => clearInterval(interval);
+    }, 2100);
+
+    return () => {
+      clearTimeout(firstNodeTimer);
+      clearTimeout(subsequentTimer);
+    };
+  }, []); // Remove dependency to prevent re-runs
+
+  // Neural Network connections management
+  useEffect(() => {
+    const createConnections = () => {
+      const svg = document.querySelector('.network-connections-svg');
+      if (!svg) return;
+
+      // Clear existing connections
+      const existingLines = svg.querySelectorAll('.dynamic-connection');
+      existingLines.forEach(line => line.remove());
+
+      // Only create connections for visible nodes
+      const visibleNodeElements = document.querySelectorAll('.network-node.visible');
+      
+      visibleNodeElements.forEach(node => {
+        const connections = (node as HTMLElement).dataset.connections?.split(',') || [];
+        
+        connections.forEach(targetClass => {
+          const targetNode = document.querySelector(`.${targetClass.trim()}.visible`);
+          if (targetNode) {
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.classList.add('dynamic-connection');
+            
+            // Get node positions
+            const nodeRect = node.getBoundingClientRect();
+            const targetRect = targetNode.getBoundingClientRect();
+            const svgRect = svg.getBoundingClientRect();
+            
+            // Calculate relative positions within SVG
+            const x1 = ((nodeRect.left + nodeRect.width / 2 - svgRect.left) / svgRect.width) * 100;
+            const y1 = ((nodeRect.top + nodeRect.height / 2 - svgRect.top) / svgRect.height) * 100;
+            const x2 = ((targetRect.left + targetRect.width / 2 - svgRect.left) / svgRect.width) * 100;
+            const y2 = ((targetRect.top + targetRect.height / 2 - svgRect.top) / svgRect.height) * 100;
+            
+            line.setAttribute('x1', `${x1}%`);
+            line.setAttribute('y1', `${y1}%`);
+            line.setAttribute('x2', `${x2}%`);
+            line.setAttribute('y2', `${y2}%`);
+            line.setAttribute('stroke', 'url(#connectionGradient)');
+            line.setAttribute('stroke-width', '0.1');
+            line.setAttribute('stroke-dasharray', '2,4');
+            line.classList.add('connection-flow');
+            
+            svg.appendChild(line);
+          }
+        });
+      });
+    };
+
+    // Update connections when visible nodes change
+    if (visibleNodes.length > 0) {
+      const timer = setTimeout(createConnections, 500);
+      const interval = setInterval(createConnections, 3000);
+      
+      return () => {
+        clearTimeout(timer);
+        clearInterval(interval);
+      };
+    }
+  }, [visibleNodes]);
 
   // Typewriter effect
   useEffect(() => {
@@ -84,6 +193,66 @@ function App() {
 
   return (
       <div className="App">
+      {/* Neural Network Background - Full Page */}
+      <div className={`neural-network-fullpage ${neuralNetworkLoaded ? 'loaded' : ''}`}>
+        {/* Render only visible nodes */}
+        {visibleNodes.includes('node-react') && (
+          <div className="network-node node-react visible" data-connections="node-nodejs,node-apis,node-cicd">React</div>
+        )}
+        {visibleNodes.includes('node-nodejs') && (
+          <div className="network-node node-nodejs visible" data-connections="node-react,node-postgresql,node-apis">Node.js</div>
+        )}
+        {visibleNodes.includes('node-aws') && (
+          <div className="network-node node-aws visible" data-connections="node-docker,node-kubernetes,node-devops">AWS</div>
+        )}
+        {visibleNodes.includes('node-docker') && (
+          <div className="network-node node-docker visible" data-connections="node-aws,node-kubernetes,node-cicd">Docker</div>
+        )}
+        {visibleNodes.includes('node-kubernetes') && (
+          <div className="network-node node-kubernetes visible" data-connections="node-aws,node-docker,node-devops">K8s</div>
+        )}
+        {visibleNodes.includes('node-python') && (
+          <div className="network-node node-python visible" data-connections="node-analytics,node-postgresql,node-apis">Python</div>
+        )}
+        {visibleNodes.includes('node-microservices') && (
+          <div className="network-node node-microservices visible" data-connections="node-architecture,node-apis,node-scalability">Microservices</div>
+        )}
+        {visibleNodes.includes('node-cicd') && (
+          <div className="network-node node-cicd visible" data-connections="node-react,node-docker,node-devops">CI/CD</div>
+        )}
+        {visibleNodes.includes('node-leadership') && (
+          <div className="network-node node-leadership visible" data-connections="node-architecture,node-devops,node-scalability">Leadership</div>
+        )}
+        {visibleNodes.includes('node-architecture') && (
+          <div className="network-node node-architecture visible" data-connections="node-microservices,node-leadership,node-scalability">Architecture</div>
+        )}
+        {visibleNodes.includes('node-devops') && (
+          <div className="network-node node-devops visible" data-connections="node-aws,node-kubernetes,node-cicd">DevOps</div>
+        )}
+        {visibleNodes.includes('node-analytics') && (
+          <div className="network-node node-analytics visible" data-connections="node-python,node-postgresql,node-scalability">Analytics</div>
+        )}
+        {visibleNodes.includes('node-scalability') && (
+          <div className="network-node node-scalability visible" data-connections="node-microservices,node-architecture,node-analytics">Scalability</div>
+        )}
+        {visibleNodes.includes('node-apis') && (
+          <div className="network-node node-apis visible" data-connections="node-react,node-nodejs,node-python">APIs</div>
+        )}
+        {visibleNodes.includes('node-postgresql') && (
+          <div className="network-node node-postgresql visible" data-connections="node-nodejs,node-python,node-analytics">PostgreSQL</div>
+        )}
+        
+        <svg className="network-connections-svg">
+          <defs>
+            <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{stopColor: 'rgba(0, 217, 255, 0.1)', stopOpacity: 1}} />
+              <stop offset="50%" style={{stopColor: 'rgba(0, 217, 255, 0.4)', stopOpacity: 1}} />
+              <stop offset="100%" style={{stopColor: 'rgba(0, 217, 255, 0.1)', stopOpacity: 1}} />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
       {/* Simple Cursor Effect */}
       <div 
         className="cursor-glow"
