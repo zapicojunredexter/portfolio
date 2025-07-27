@@ -179,110 +179,397 @@ function App() {
            
            {/* Welcome/Instructions Card */}
            <div className="content-card welcome-card">
-             <h3>🌟 Welcome to My Journey</h3>
-             <p><strong>How to navigate:</strong></p>
-             <p>• Scroll to explore my forest portfolio</p>
-             <p>• Each section reveals my story</p>
-             <p>• Discover my skills, projects & passion</p>
-             <p><em>Let the adventure begin!</em></p>
+             <div className="card-header">
+               <div className="card-icon">🌟</div>
+               <h3>Welcome to My Digital Forest</h3>
+             </div>
+             <div className="card-content">
+               <div className="instruction-list">
+                 <div className="instruction-item">
+                   <span className="instruction-icon">🎮</span>
+                   <div>
+                     <strong>Scroll to explore</strong>
+                     <p>Navigate through my interactive portfolio</p>
+                   </div>
+                 </div>
+                 <div className="instruction-item">
+                   <span className="instruction-icon">📖</span>
+                   <div>
+                     <strong>Discover my story</strong>
+                     <p>Each card reveals different aspects of my journey</p>
+                   </div>
+                 </div>
+                 <div className="instruction-item">
+                   <span className="instruction-icon">💡</span>
+                   <div>
+                     <strong>See my passion</strong>
+                     <p>Skills, projects, and innovation in action</p>
+                   </div>
+                 </div>
+               </div>
+               <div className="adventure-banner">
+                 <span className="adventure-text">🚀 Ready for the adventure?</span>
+               </div>
+             </div>
            </div>
            
            {/* About Me Card - Enhanced */}
            <div className="content-card about-card">
-             <h3>👨‍💻 About Me</h3>
-             <p><strong>Full-Stack Developer & Tech Leader</strong></p>
-             <p>🎯 5+ years building scalable solutions</p>
-             <p>🚀 Passionate about clean code & innovation</p>
-             <p>🌱 Always learning cutting-edge technologies</p>
-             <p>🎨 Love creating user-centered experiences</p>
-             <p><em>"Code is poetry in motion"</em></p>
+             <div className="card-header">
+               <div className="card-icon rotating">👨‍💻</div>
+               <h3>About Me</h3>
+             </div>
+             <div className="card-content">
+               <div className="about-intro">
+                 <h4>Full-Stack Developer & Tech Leader</h4>
+                 <div className="experience-badge">5+ Years Experience</div>
+               </div>
+               <div className="qualities-grid">
+                 <div className="quality-item">
+                   <span className="quality-icon">🎯</span>
+                   <div>
+                     <strong>Problem Solver</strong>
+                     <p>Building scalable solutions that matter</p>
+                   </div>
+                 </div>
+                 <div className="quality-item">
+                   <span className="quality-icon">🚀</span>
+                   <div>
+                     <strong>Innovation Driver</strong>
+                     <p>Passionate about clean code & modern tech</p>
+                   </div>
+                 </div>
+                 <div className="quality-item">
+                   <span className="quality-icon">🌱</span>
+                   <div>
+                     <strong>Lifelong Learner</strong>
+                     <p>Always exploring cutting-edge technologies</p>
+                   </div>
+                 </div>
+                 <div className="quality-item">
+                   <span className="quality-icon">🎨</span>
+                   <div>
+                     <strong>UX Advocate</strong>
+                     <p>Creating user-centered experiences</p>
+                   </div>
+                 </div>
+               </div>
+               <div className="quote-section">
+                 <div className="quote-mark">"</div>
+                 <p className="quote-text">Code is poetry in motion</p>
+                 <div className="quote-mark">"</div>
+               </div>
+             </div>
            </div>
             
            {/* Projects Card - Enhanced */}
            <div className="content-card projects-card">
-             <h3>🛠️ Featured Projects</h3>
-             <div><strong>🛒 E-Commerce Platform</strong></div>
-             <div>→ React, Node.js, PostgreSQL</div>
-             <div>→ 50K+ users, 99.9% uptime</div>
-             <div><strong>🤖 AI Analytics Dashboard</strong></div>
-             <div>→ Python, TensorFlow, AWS</div>
-             <div>→ Real-time data visualization</div>
-             <div><strong>🏗️ Microservices Platform</strong></div>
-             <div>→ Docker, Kubernetes, API Gateway</div>
-             <div>→ Scalable architecture for 10M+ requests</div>
+             <div className="card-header">
+               <div className="card-icon pulse">🛠️</div>
+               <h3>Featured Projects</h3>
+             </div>
+             <div className="card-content">
+               <div className="projects-list">
+                 <div className="project-item">
+                   <div className="project-header">
+                     <span className="project-icon">🛒</span>
+                     <h4>E-Commerce Platform</h4>
+                     <div className="project-status success">Live</div>
+                   </div>
+                   <div className="project-details">
+                     <div className="tech-stack">
+                       <span className="tech-tag">React</span>
+                       <span className="tech-tag">Node.js</span>
+                       <span className="tech-tag">PostgreSQL</span>
+                     </div>
+                     <div className="project-metrics">
+                       <span className="metric">👥 50K+ users</span>
+                       <span className="metric">⚡ 99.9% uptime</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="project-item">
+                   <div className="project-header">
+                     <span className="project-icon">🤖</span>
+                     <h4>AI Analytics Dashboard</h4>
+                     <div className="project-status beta">Beta</div>
+                   </div>
+                   <div className="project-details">
+                     <div className="tech-stack">
+                       <span className="tech-tag">Python</span>
+                       <span className="tech-tag">TensorFlow</span>
+                       <span className="tech-tag">AWS</span>
+                     </div>
+                     <div className="project-metrics">
+                       <span className="metric">📊 Real-time analytics</span>
+                       <span className="metric">🔮 ML predictions</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="project-item">
+                   <div className="project-header">
+                     <span className="project-icon">🏗️</span>
+                     <h4>Microservices Platform</h4>
+                     <div className="project-status success">Production</div>
+                   </div>
+                   <div className="project-details">
+                     <div className="tech-stack">
+                       <span className="tech-tag">Docker</span>
+                       <span className="tech-tag">Kubernetes</span>
+                       <span className="tech-tag">API Gateway</span>
+                     </div>
+                     <div className="project-metrics">
+                       <span className="metric">🚀 10M+ requests/day</span>
+                       <span className="metric">⚡ Auto-scaling</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
            </div>
               
            {/* Skills Card - Enhanced */}
            <div className="content-card skills-card">
-             <h3>⭐ Technical Arsenal</h3>
-             <div><strong>Frontend:</strong> React, TypeScript, Next.js</div>
-             <div><strong>Backend:</strong> Node.js, Python, Go</div>
-             <div><strong>Cloud:</strong> AWS, Docker, Kubernetes</div>
-             <div><strong>Database:</strong> PostgreSQL, MongoDB, Redis</div>
-             <div><strong>DevOps:</strong> CI/CD, GitHub Actions, Terraform</div>
-             <div><strong>Tools:</strong> VS Code, Git, Figma, Postman</div>
-             <div><em>Always expanding this toolkit!</em></div>
+             <div className="card-header">
+               <div className="card-icon sparkle">⭐</div>
+               <h3>Technical Arsenal</h3>
+             </div>
+             <div className="card-content">
+               <div className="skills-categories">
+                 <div className="skill-category">
+                   <div className="category-header">
+                     <span className="category-icon">🎨</span>
+                     <h4>Frontend</h4>
+                   </div>
+                   <div className="skill-tags">
+                     <span className="skill-tag react">React</span>
+                     <span className="skill-tag ts">TypeScript</span>
+                     <span className="skill-tag next">Next.js</span>
+                   </div>
+                 </div>
+                 
+                 <div className="skill-category">
+                   <div className="category-header">
+                     <span className="category-icon">⚙️</span>
+                     <h4>Backend</h4>
+                   </div>
+                   <div className="skill-tags">
+                     <span className="skill-tag node">Node.js</span>
+                     <span className="skill-tag python">Python</span>
+                     <span className="skill-tag go">Go</span>
+                   </div>
+                 </div>
+                 
+                 <div className="skill-category">
+                   <div className="category-header">
+                     <span className="category-icon">☁️</span>
+                     <h4>Cloud & DevOps</h4>
+                   </div>
+                   <div className="skill-tags">
+                     <span className="skill-tag aws">AWS</span>
+                     <span className="skill-tag docker">Docker</span>
+                     <span className="skill-tag k8s">Kubernetes</span>
+                   </div>
+                 </div>
+                 
+                 <div className="skill-category">
+                   <div className="category-header">
+                     <span className="category-icon">💾</span>
+                     <h4>Database</h4>
+                   </div>
+                   <div className="skill-tags">
+                     <span className="skill-tag postgres">PostgreSQL</span>
+                     <span className="skill-tag mongo">MongoDB</span>
+                     <span className="skill-tag redis">Redis</span>
+                   </div>
+                 </div>
+               </div>
+               <div className="expanding-note">
+                 <span className="growth-icon">📈</span>
+                 <p>Always expanding this toolkit!</p>
+               </div>
+             </div>
            </div>
               
            {/* Experience Card - New */}
            <div className="content-card experience-card">
-             <h3>💼 Professional Journey</h3>
-             <div><strong>Senior Developer @ TechCorp</strong></div>
-             <div>→ Led team of 5 developers</div>
-             <div>→ Architected microservices platform</div>
-             <div><strong>Full-Stack Engineer @ StartupX</strong></div>
-             <div>→ Built MVP from scratch</div>
-             <div>→ Scaled to 100K+ users</div>
-             <div><strong>Software Engineer @ InnovateLab</strong></div>
-             <div>→ Developed AI-powered features</div>
-             <div>→ Mentored junior developers</div>
+             <div className="card-header">
+               <div className="card-icon bounce">💼</div>
+               <h3>Professional Journey</h3>
+             </div>
+             <div className="card-content">
+               <div className="timeline">
+                 <div className="timeline-item current">
+                   <div className="timeline-dot"></div>
+                   <div className="timeline-content">
+                     <div className="job-header">
+                       <h4>Senior Developer</h4>
+                       <span className="company">@ TechCorp</span>
+                       <span className="duration">2022 - Present</span>
+                     </div>
+                     <div className="achievements">
+                       <div className="achievement">👥 Led team of 5 developers</div>
+                       <div className="achievement">🏗️ Architected microservices platform</div>
+                       <div className="achievement">📈 Improved system performance 40%</div>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="timeline-item">
+                   <div className="timeline-dot"></div>
+                   <div className="timeline-content">
+                     <div className="job-header">
+                       <h4>Full-Stack Engineer</h4>
+                       <span className="company">@ StartupX</span>
+                       <span className="duration">2020 - 2022</span>
+                     </div>
+                     <div className="achievements">
+                       <div className="achievement">🚀 Built MVP from scratch</div>
+                       <div className="achievement">📊 Scaled to 100K+ users</div>
+                       <div className="achievement">💰 Helped raise $2M Series A</div>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="timeline-item">
+                   <div className="timeline-dot"></div>
+                   <div className="timeline-content">
+                     <div className="job-header">
+                       <h4>Software Engineer</h4>
+                       <span className="company">@ InnovateLab</span>
+                       <span className="duration">2019 - 2020</span>
+                     </div>
+                     <div className="achievements">
+                       <div className="achievement">🤖 Developed AI-powered features</div>
+                       <div className="achievement">👨‍🏫 Mentored junior developers</div>
+                       <div className="achievement">🏆 Won internal innovation award</div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
            </div>
               
            {/* Final Contact Card */}
            <div className="content-card final-contact-card">
-             <h3>🚀 Let's Connect!</h3>
-             <p><strong>Ready to collaborate?</strong></p>
-             <div>📧 your.email@example.com</div>
-             <div>💼 linkedin.com/in/yourprofile</div>
-             <div>🐙 github.com/yourusername</div>
-             <div>🌐 yourportfolio.dev</div>
-             <div>📱 +1 (555) 123-4567</div>
-             <p><em>Open to exciting opportunities!</em></p>
-             <p>💡 Coffee chat? Project idea? Let's talk!</p>
+             <div className="card-header">
+               <div className="card-icon wave">🚀</div>
+               <h3>Let's Connect!</h3>
+             </div>
+             <div className="card-content">
+               <div className="contact-intro">
+                 <h4>Ready to collaborate?</h4>
+                 <p>Let's build something amazing together!</p>
+               </div>
+               <div className="contact-methods-grid">
+                 <div className="contact-method">
+                   <span className="contact-icon">📧</span>
+                   <div className="contact-info">
+                     <strong>Email</strong>
+                     <p>your.email@example.com</p>
+                   </div>
+                 </div>
+                 <div className="contact-method">
+                   <span className="contact-icon">💼</span>
+                   <div className="contact-info">
+                     <strong>LinkedIn</strong>
+                     <p>linkedin.com/in/yourprofile</p>
+                   </div>
+                 </div>
+                 <div className="contact-method">
+                   <span className="contact-icon">🐙</span>
+                   <div className="contact-info">
+                     <strong>GitHub</strong>
+                     <p>github.com/yourusername</p>
+                   </div>
+                 </div>
+                 <div className="contact-method">
+                   <span className="contact-icon">🌐</span>
+                   <div className="contact-info">
+                     <strong>Portfolio</strong>
+                     <p>yourportfolio.dev</p>
+                   </div>
+                 </div>
+                 <div className="contact-method">
+                   <span className="contact-icon">📱</span>
+                   <div className="contact-info">
+                     <strong>Phone</strong>
+                     <p>+1 (555) 123-4567</p>
+                   </div>
+                 </div>
+               </div>
+               <div className="opportunities-section">
+                 <div className="opportunities-header">
+                   <span className="opportunity-icon">💡</span>
+                   <h4>Open to Opportunities</h4>
+                 </div>
+                 <div className="opportunity-types">
+                   <span className="opportunity-tag">☕ Coffee Chats</span>
+                   <span className="opportunity-tag">🚀 Project Ideas</span>
+                   <span className="opportunity-tag">💼 Job Opportunities</span>
+                   <span className="opportunity-tag">🤝 Collaborations</span>
+                 </div>
+               </div>
+             </div>
            </div>
            
            {/* Contact Form Card */}
            <div className="content-card contact-form-card">
-             <h3>📧 Send Me a Message</h3>
-             <form className="contact-form" onSubmit={handleContactSubmit}>
-               <div className="form-group">
-                 <label htmlFor="name">Your Name</label>
-                 <input type="text" id="name" name="name" placeholder="John Doe" required />
+             <div className="card-header">
+               <div className="card-icon float">📧</div>
+               <h3>Send Me a Message</h3>
+             </div>
+             <div className="card-content">
+               <div className="form-intro">
+                 <p>Have a project in mind? Let's discuss how we can work together!</p>
                </div>
-               <div className="form-group">
-                 <label htmlFor="email">Your Email</label>
-                 <input type="email" id="email" name="email" placeholder="john@example.com" required />
-               </div>
-               <div className="form-group">
-                 <label htmlFor="subject">Subject</label>
-                 <select id="subject" name="subject" required>
-                   <option value="">Select a topic</option>
-                   <option value="collaboration">Collaboration Opportunity</option>
-                   <option value="job">Job Opportunity</option>
-                   <option value="project">Project Discussion</option>
-                   <option value="consultation">Consultation</option>
-                   <option value="other">Other</option>
-                 </select>
-               </div>
-               <div className="form-group">
-                 <label htmlFor="message">Your Message</label>
-                 <textarea id="message" name="message" rows={4} placeholder="Tell me about your project or opportunity..." required></textarea>
-               </div>
-               <button type="submit" className="submit-btn">
-                 🚀 Send Message
-               </button>
-             </form>
-             <p className="form-note"><em>I'll get back to you within 24 hours!</em></p>
+               <form className="contact-form" onSubmit={handleContactSubmit}>
+                 <div className="form-row">
+                   <div className="form-group">
+                     <label htmlFor="name">
+                       <span className="label-icon">👤</span>
+                       Your Name
+                     </label>
+                     <input type="text" id="name" name="name" placeholder="John Doe" required />
+                   </div>
+                   <div className="form-group">
+                     <label htmlFor="email">
+                       <span className="label-icon">📧</span>
+                       Your Email
+                     </label>
+                     <input type="email" id="email" name="email" placeholder="john@example.com" required />
+                   </div>
+                 </div>
+                 <div className="form-group">
+                   <label htmlFor="subject">
+                     <span className="label-icon">💼</span>
+                     Subject
+                   </label>
+                   <select id="subject" name="subject" required>
+                     <option value="">What would you like to discuss?</option>
+                     <option value="collaboration">🤝 Collaboration Opportunity</option>
+                     <option value="job">💼 Job Opportunity</option>
+                     <option value="project">🚀 Project Discussion</option>
+                     <option value="consultation">💡 Consultation</option>
+                     <option value="other">💬 Other</option>
+                   </select>
+                 </div>
+                 <div className="form-group">
+                   <label htmlFor="message">
+                     <span className="label-icon">✍️</span>
+                     Your Message
+                   </label>
+                   <textarea id="message" name="message" rows={4} placeholder="Tell me about your project, opportunity, or any questions you have..." required></textarea>
+                 </div>
+                 <button type="submit" className="submit-btn">
+                   <span className="btn-icon">🚀</span>
+                   Send Message
+                   <div className="btn-ripple"></div>
+                 </button>
+               </form>
+             </div>
            </div>
          </div>
               
@@ -309,7 +596,7 @@ function App() {
 
 
        {/* Spacer div to enable scrolling - 7 sections including contact form */}
-       <div style={{ height: '1400vh' }}></div>
+       <div style={{ height: '1000vh' }}></div>
       </div>
   );
 }
