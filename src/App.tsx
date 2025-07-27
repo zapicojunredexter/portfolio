@@ -363,6 +363,44 @@ function App() {
                      </div>
                    </div>
                  </div>
+                 
+                 <div className="project-item">
+                   <div className="project-header">
+                     <span className="project-icon">📱</span>
+                     <h4>Mobile Banking App</h4>
+                     <div className="project-status success">Live</div>
+                   </div>
+                   <div className="project-details">
+                     <div className="tech-stack">
+                       <span className="tech-tag">React Native</span>
+                       <span className="tech-tag">Redux</span>
+                       <span className="tech-tag">Firebase</span>
+                     </div>
+                     <div className="project-metrics">
+                       <span className="metric">💳 500K+ transactions</span>
+                       <span className="metric">🔒 Bank-grade security</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="project-item">
+                   <div className="project-header">
+                     <span className="project-icon">🌐</span>
+                     <h4>Global CDN Solution</h4>
+                     <div className="project-status beta">Scaling</div>
+                   </div>
+                   <div className="project-details">
+                     <div className="tech-stack">
+                       <span className="tech-tag">Edge Computing</span>
+                       <span className="tech-tag">CloudFlare</span>
+                       <span className="tech-tag">Redis</span>
+                     </div>
+                     <div className="project-metrics">
+                       <span className="metric">🌍 15+ global regions</span>
+                       <span className="metric">⚡ &lt;50ms latency</span>
+                     </div>
+                   </div>
+                 </div>
                </div>
              </div>
            </div>

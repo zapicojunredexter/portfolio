@@ -3220,17 +3220,45 @@ body {
 .projects-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 4px 8px 4px 0;
+  margin: -4px 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 69, 19, 0.3) transparent;
+}
+
+/* Custom scrollbar styles */
+.projects-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.projects-list::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 3px;
+}
+
+.projects-list::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.3);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.projects-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 69, 19, 0.5);
 }
 
 .project-item {
   background: rgba(139, 69, 19, 0.03);
   border: 1px solid rgba(139, 69, 19, 0.1);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 10px;
+  padding: 12px 14px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  min-height: 0;
+  flex-shrink: 0;
 }
 
 .project-item::before {
@@ -3258,19 +3286,28 @@ body {
 .project-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
 .project-icon {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   animation: projectIconBounce 2s ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
+  animation-delay: calc(var(--item-index, 0) * 0.4s);
+  flex-shrink: 0;
 }
 
-.project-item:nth-child(1) .project-icon { --delay: 0s; }
-.project-item:nth-child(2) .project-icon { --delay: 0.5s; }
-.project-item:nth-child(3) .project-icon { --delay: 1s; }
+/* Dynamic animation delays for unlimited projects */
+.project-item:nth-child(1) { --item-index: 0; }
+.project-item:nth-child(2) { --item-index: 1; }
+.project-item:nth-child(3) { --item-index: 2; }
+.project-item:nth-child(4) { --item-index: 3; }
+.project-item:nth-child(5) { --item-index: 4; }
+.project-item:nth-child(6) { --item-index: 5; }
+.project-item:nth-child(7) { --item-index: 6; }
+.project-item:nth-child(8) { --item-index: 7; }
+.project-item:nth-child(9) { --item-index: 8; }
+.project-item:nth-child(10) { --item-index: 9; }
 
 @keyframes projectIconBounce {
   0%, 100% { transform: scale(1); }
@@ -3279,12 +3316,13 @@ body {
 
 .project-header h4 {
   font-family: 'Press Start 2P', cursive;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #8B4513;
   margin: 0;
   font-weight: normal;
   flex: 1;
-  line-height: 1.3;
+  line-height: 1.2;
+  min-width: 0;
 }
 
 .project-status {
@@ -3320,26 +3358,28 @@ body {
 .project-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .tech-stack {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .tech-tag {
   font-family: 'Press Start 2P', cursive;
   background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.05));
   color: #8B4513;
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: 4px;
-  font-size: 0.5rem;
+  font-size: 0.45rem;
   font-weight: normal;
   border: 1px solid rgba(139, 69, 19, 0.2);
   transition: all 0.3s ease;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .tech-tag:hover {
@@ -3350,17 +3390,20 @@ body {
 
 .project-metrics {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .metric {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   color: #666;
   background: rgba(255, 215, 0, 0.1);
-  padding: 3px 6px;
-  border-radius: 4px;
+  padding: 2px 5px;
+  border-radius: 3px;
   border: 1px solid rgba(255, 215, 0, 0.2);
+  white-space: nowrap;
+  line-height: 1.3;
 }
 
 /* Skills Card Styles */
