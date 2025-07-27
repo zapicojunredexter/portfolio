@@ -257,67 +257,66 @@ body {
   50% { transform: rotate(5deg); }
 }
 
-/* Mario Character - stays centered */
-.mario-character {
+/* Person Character - stays centered */
+.person-character {
   position: absolute;
-  bottom: 130px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 25;
   transition: transform 0.2s ease;
 }
 
-.mario-character.running .character-body {
-  animation: marioRun 0.6s ease-in-out infinite;
+.person-sprite {
+  width: 120px;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  transition: all 0.1s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
-.mario-character.idle .character-body {
-  animation: marioIdle 2s ease-in-out infinite;
-}
-
-.character-body {
-  position: relative;
-  width: 80px;
-  height: 120px;
-}
-
-@keyframes marioRun {
-  0%, 100% { 
-    transform: translateY(0px) scaleX(1) scaleY(1); 
+/* Mobile responsive person character */
+@media (max-width: 768px) {
+  .person-character {
+    bottom: 100px;
   }
-  25% { 
-    transform: translateY(-5px) scaleX(1.05) scaleY(0.95); 
-  }
-  50% { 
-    transform: translateY(0px) scaleX(1) scaleY(1); 
-  }
-  75% { 
-    transform: translateY(-3px) scaleX(0.95) scaleY(1.05); 
+  
+  .person-sprite {
+    width: 80px;
+    max-height: 100px;
   }
 }
 
-@keyframes marioIdle {
+.person-character.walking .person-sprite {
+  animation: personBounce 0.15s ease-in-out infinite;
+}
+
+.person-character.idle .person-sprite {
+  animation: personIdle 3s ease-in-out infinite;
+}
+
+/* Character body styles removed - using person sprites now */
+
+@keyframes personBounce {
   0%, 100% { 
     transform: translateY(0px) scale(1); 
   }
   50% { 
-    transform: translateY(-2px) scale(1.02); 
+    transform: translateY(-3px) scale(1.02); 
   }
 }
 
-.character-head {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #00d9ff;
-  box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
-  animation: headFloat 2s ease-in-out infinite;
+@keyframes personIdle {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+  }
+  50% { 
+    transform: translateY(-1px) scale(1.01); 
+  }
 }
+
+/* Character head styles removed - using person sprites now */
 
 @keyframes headFloat {
   0%, 100% { transform: translateX(-50%) translateY(0px); }

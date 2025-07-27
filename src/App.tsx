@@ -24,6 +24,9 @@ function App() {
   const [isTyping, setIsTyping] = useState(true);
 
   const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [currentPersonFrame, setCurrentPersonFrame] = useState<number>(1);
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
 
   
   // Contact form submission handler
@@ -68,7 +71,28 @@ function App() {
       
       setScrollProgress(scrollPercent);
       
-
+      // Walking animation logic
+      setIsScrolling(true);
+      
+      // Clear existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      
+      // Cycle through walking frames (person2-person6) every few scroll events
+      setCurrentPersonFrame(prev => {
+        if (prev === 1) return 2; // Start walking from frame 2
+        if (prev >= 6) return 2; // Reset to frame 2 after frame 6
+        return prev + 1;
+      });
+      
+      // Set timeout to stop walking animation
+      const newTimeout = setTimeout(() => {
+        setIsScrolling(false);
+        setCurrentPersonFrame(1); // Reset to idle frame
+      }, 200); // Stop animation 200ms after scrolling stops
+      
+      setScrollTimeout(newTimeout);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -78,7 +102,7 @@ function App() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [scrollTimeout]);
 
 
 
@@ -126,9 +150,8 @@ function App() {
   }, []);
 
   // Calculate game elements based on scroll
-      const worldOffset = scrollProgress * -12000; // Background moves across 7 sections including contact form
+  const worldOffset = scrollProgress * -12000; // Background moves across 7 sections including contact form
   const characterJump = Math.sin(scrollProgress * 20) * 5; // Bouncing effect
-  const isRunning = scrollProgress > 0;
   
 
 
@@ -573,20 +596,15 @@ function App() {
            </div>
          </div>
               
-         {/* Mario Character - stays in center */}
-         <div className={`mario-character ${isRunning ? 'running' : 'idle'}`}
+         {/* Person Character - stays in center */}
+         <div className={`person-character ${isScrolling ? 'walking' : 'idle'}`}
               style={{ transform: `translateY(${characterJump}px)` }}>
-           <div className="character-body">
-             <div className="character-head">
-               <img src="/avatar.png" alt="Mario Character" className="character-avatar" />
-                    </div>
-             <div className="character-torso"></div>
-             <div className="character-arm character-arm-left"></div>
-             <div className="character-arm character-arm-right"></div>
-             <div className="character-leg character-leg-left"></div>
-             <div className="character-leg character-leg-right"></div>
-                    </div>
-                  </div>
+           <img 
+             src={`/person/person${currentPersonFrame}.png`} 
+             alt="Person Character" 
+             className="person-sprite" 
+           />
+         </div>
                   
 
                   </div>
