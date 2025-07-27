@@ -24,7 +24,23 @@ function App() {
   const [isTyping, setIsTyping] = useState(true);
 
   const [scrollProgress, setScrollProgress] = useState<number>(0);
-  const [currentCheckpoint, setCurrentCheckpoint] = useState<number>(0);
+
+  
+  // Contact form submission handler
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+    
+    // Simple success message for now
+    alert(`Thanks ${name}! Your message about "${subject}" has been received. I'll get back to you at ${email} soon!`);
+    
+    // Reset form
+    e.currentTarget.reset();
+  };
 
 
   const textsToType = [
@@ -52,16 +68,7 @@ function App() {
       
       setScrollProgress(scrollPercent);
       
-      // Determine checkpoint based on scroll progress - each section is 2 browser widths
-      let newCheckpoint = 0;
-      if (scrollPercent >= 0.2) newCheckpoint = 1;      // First checkpoint at 20%
-      if (scrollPercent >= 0.4) newCheckpoint = 2;      // Second checkpoint at 40%
-      if (scrollPercent >= 0.6) newCheckpoint = 3;      // Third checkpoint at 60%
-      if (scrollPercent >= 0.8) newCheckpoint = 4;      // Final checkpoint at 80%
-      
-      if (newCheckpoint !== currentCheckpoint && newCheckpoint <= 4) {
-        setCurrentCheckpoint(newCheckpoint);
-      }
+
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -119,7 +126,7 @@ function App() {
   }, []);
 
   // Calculate game elements based on scroll
-      const worldOffset = scrollProgress * -8000; // Background moves across longer sections (2 browser widths each)
+      const worldOffset = scrollProgress * -12000; // Background moves across 7 sections including contact form
   const characterJump = Math.sin(scrollProgress * 20) * 5; // Bouncing effect
   const isRunning = scrollProgress > 0;
   
@@ -127,6 +134,14 @@ function App() {
 
   return (
       <div className="App">
+        {/* Scroll Progress Bar */}
+        <div className="scroll-progress-bar">
+          <div 
+            className="scroll-progress-fill" 
+            style={{ width: `${scrollProgress * 100}%` }}
+          ></div>
+        </div>
+        
              {/* Mario-style Game Scene */}
        <div className="mario-game-scene">
                   {/* Forest Parallax Background Layers */}
@@ -161,33 +176,115 @@ function App() {
               
          <div className="parallax-layer ground-layer" style={{ transform: `translateX(${worldOffset}px)` }}>
            {/* Portfolio Content Cards - standing cardboard style */}
+           
+           {/* Welcome/Instructions Card */}
+           <div className="content-card welcome-card">
+             <h3>🌟 Welcome to My Journey</h3>
+             <p><strong>How to navigate:</strong></p>
+             <p>• Scroll to explore my forest portfolio</p>
+             <p>• Each section reveals my story</p>
+             <p>• Discover my skills, projects & passion</p>
+             <p><em>Let the adventure begin!</em></p>
+           </div>
+           
+           {/* About Me Card - Enhanced */}
            <div className="content-card about-card">
-             <h3>About Me</h3>
-             <p>Full-Stack Developer & Tech Leader</p>
-             <p>5+ years engineering experience</p>
-            </div>
+             <h3>👨‍💻 About Me</h3>
+             <p><strong>Full-Stack Developer & Tech Leader</strong></p>
+             <p>🎯 5+ years building scalable solutions</p>
+             <p>🚀 Passionate about clean code & innovation</p>
+             <p>🌱 Always learning cutting-edge technologies</p>
+             <p>🎨 Love creating user-centered experiences</p>
+             <p><em>"Code is poetry in motion"</em></p>
+           </div>
             
+           {/* Projects Card - Enhanced */}
            <div className="content-card projects-card">
-             <h3>🛠️ Projects</h3>
-             <div>🛒 E-Commerce Platform</div>
-             <div>🤖 AI Analytics Dashboard</div>
-             <div>🏗️ Microservices Platform</div>
-              </div>
+             <h3>🛠️ Featured Projects</h3>
+             <div><strong>🛒 E-Commerce Platform</strong></div>
+             <div>→ React, Node.js, PostgreSQL</div>
+             <div>→ 50K+ users, 99.9% uptime</div>
+             <div><strong>🤖 AI Analytics Dashboard</strong></div>
+             <div>→ Python, TensorFlow, AWS</div>
+             <div>→ Real-time data visualization</div>
+             <div><strong>🏗️ Microservices Platform</strong></div>
+             <div>→ Docker, Kubernetes, API Gateway</div>
+             <div>→ Scalable architecture for 10M+ requests</div>
+           </div>
               
+           {/* Skills Card - Enhanced */}
            <div className="content-card skills-card">
-             <h3>⭐ Skills</h3>
-             <div>React • TypeScript • Node.js</div>
-             <div>Python • AWS • Docker</div>
-             <div>PostgreSQL • CI/CD</div>
-              </div>
+             <h3>⭐ Technical Arsenal</h3>
+             <div><strong>Frontend:</strong> React, TypeScript, Next.js</div>
+             <div><strong>Backend:</strong> Node.js, Python, Go</div>
+             <div><strong>Cloud:</strong> AWS, Docker, Kubernetes</div>
+             <div><strong>Database:</strong> PostgreSQL, MongoDB, Redis</div>
+             <div><strong>DevOps:</strong> CI/CD, GitHub Actions, Terraform</div>
+             <div><strong>Tools:</strong> VS Code, Git, Figma, Postman</div>
+             <div><em>Always expanding this toolkit!</em></div>
+           </div>
               
-           <div className="content-card contact-card">
-             <h3>🏁 Contact</h3>
+           {/* Experience Card - New */}
+           <div className="content-card experience-card">
+             <h3>💼 Professional Journey</h3>
+             <div><strong>Senior Developer @ TechCorp</strong></div>
+             <div>→ Led team of 5 developers</div>
+             <div>→ Architected microservices platform</div>
+             <div><strong>Full-Stack Engineer @ StartupX</strong></div>
+             <div>→ Built MVP from scratch</div>
+             <div>→ Scaled to 100K+ users</div>
+             <div><strong>Software Engineer @ InnovateLab</strong></div>
+             <div>→ Developed AI-powered features</div>
+             <div>→ Mentored junior developers</div>
+           </div>
+              
+           {/* Final Contact Card */}
+           <div className="content-card final-contact-card">
+             <h3>🚀 Let's Connect!</h3>
+             <p><strong>Ready to collaborate?</strong></p>
              <div>📧 your.email@example.com</div>
-             <div>💼 LinkedIn Profile</div>
-             <div>🐙 GitHub Profile</div>
-                </div>
-              </div>
+             <div>💼 linkedin.com/in/yourprofile</div>
+             <div>🐙 github.com/yourusername</div>
+             <div>🌐 yourportfolio.dev</div>
+             <div>📱 +1 (555) 123-4567</div>
+             <p><em>Open to exciting opportunities!</em></p>
+             <p>💡 Coffee chat? Project idea? Let's talk!</p>
+           </div>
+           
+           {/* Contact Form Card */}
+           <div className="content-card contact-form-card">
+             <h3>📧 Send Me a Message</h3>
+             <form className="contact-form" onSubmit={handleContactSubmit}>
+               <div className="form-group">
+                 <label htmlFor="name">Your Name</label>
+                 <input type="text" id="name" name="name" placeholder="John Doe" required />
+               </div>
+               <div className="form-group">
+                 <label htmlFor="email">Your Email</label>
+                 <input type="email" id="email" name="email" placeholder="john@example.com" required />
+               </div>
+               <div className="form-group">
+                 <label htmlFor="subject">Subject</label>
+                 <select id="subject" name="subject" required>
+                   <option value="">Select a topic</option>
+                   <option value="collaboration">Collaboration Opportunity</option>
+                   <option value="job">Job Opportunity</option>
+                   <option value="project">Project Discussion</option>
+                   <option value="consultation">Consultation</option>
+                   <option value="other">Other</option>
+                 </select>
+               </div>
+               <div className="form-group">
+                 <label htmlFor="message">Your Message</label>
+                 <textarea id="message" name="message" rows={4} placeholder="Tell me about your project or opportunity..." required></textarea>
+               </div>
+               <button type="submit" className="submit-btn">
+                 🚀 Send Message
+               </button>
+             </form>
+             <p className="form-note"><em>I'll get back to you within 24 hours!</em></p>
+           </div>
+         </div>
               
          {/* Mario Character - stays in center */}
          <div className={`mario-character ${isRunning ? 'running' : 'idle'}`}
@@ -204,25 +301,15 @@ function App() {
                     </div>
                   </div>
                   
-         {/* Game UI */}
-         <div className="game-ui">
-                    <div className="score-display">
-           <span className="progress-display">Progress: {Math.round(scrollProgress * 100)}%</span>
-         </div>
-           <div className="checkpoint-indicator">
-             Checkpoint {currentCheckpoint + 1} of 5
-                  </div>
-                  
 
-                    </div>
                   </div>
                   
 
 
 
 
-       {/* Spacer div to enable scrolling - each section is 2 browser widths */}
-       <div style={{ height: '1000vh' }}></div>
+       {/* Spacer div to enable scrolling - 7 sections including contact form */}
+       <div style={{ height: '1400vh' }}></div>
       </div>
   );
 }

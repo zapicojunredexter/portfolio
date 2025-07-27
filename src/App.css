@@ -7,6 +7,25 @@
   box-sizing: border-box;
 }
 
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.scroll-progress-fill {
+  height: 100%;
+  background: brown;
+  width: 0%;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 8px rgba(0, 217, 255, 0.6);
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
@@ -45,12 +64,12 @@ body {
 }
 
 .forest-sky {
-  width: 200%;
+  width: 300%;
   height: 100%;
   object-fit: cover;
   position: absolute;
   top: 0;
-  left: -50%;
+  left: -100%;
 }
 
 .forest-sun {
@@ -69,11 +88,11 @@ body {
 }
 
 .forest-clouds {
-  width: 300%;
+  width: 400%;
   height: 100%;
   position: absolute;
   top: 0;
-  left: -100%;
+  left: -150%;
   background-repeat: repeat-x;
   background-position: left top;
   background-size: auto 100%;
@@ -86,11 +105,11 @@ body {
 }
 
 .forest-mountains-1 {
-  width: 800%;
+  width: 1000%;
   height: 100%;
   position: absolute;
   bottom: 0;
-  left: -350%;
+  left: -450%;
   background-repeat: repeat-x;
   background-position: left bottom;
   background-size: auto 100%;
@@ -103,11 +122,11 @@ body {
 }
 
 .forest-mountains-2 {
-  width: 600%;
+  width: 800%;
   height: 100%;
   position: absolute;
   bottom: 0;
-  left: -250%;
+  left: -350%;
   background-repeat: repeat-x;
   background-position: left bottom;
   background-size: auto 100%;
@@ -120,11 +139,11 @@ body {
 }
 
 .forest-mountains-3 {
-  width: 400%;
+  width: 600%;
   height: 100%;
   position: absolute;
   bottom: 0;
-  left: -150%;
+  left: -250%;
   background-repeat: repeat-x;
   background-position: left bottom;
   background-size: auto 100%;
@@ -137,11 +156,11 @@ body {
 }
 
 .forest-trees {
-  width: 1200%;
+  width: 1500%;
   height: 100%;
   position: absolute;
   bottom: 0;
-  left: -550%;
+  left: -700%;
   background-repeat: repeat-x;
   background-position: left bottom;
   background-size: auto 100%;
@@ -154,11 +173,11 @@ body {
 }
 
 .forest-rocks {
-  width: 1600%;
+  width: 2000%;
   height: 100%;
   position: absolute;
   bottom: 0;
-  left: -750%;
+  left: -950%;
   background-repeat: repeat-x;
   background-position: left bottom;
   background-size: auto 100%;
@@ -386,103 +405,17 @@ body {
   50% { transform: rotate(-15deg); }
 }
 
-/* Game UI */
-.game-ui {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  z-index: 50;
-  pointer-events: none;
-}
-
-.score-display {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 15px 20px;
-  border-radius: 15px;
-  color: white;
-  font-weight: bold;
-  border: 2px solid #FFD700;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.coins-count {
-  font-size: 1.5rem;
-  color: #FFD700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.progress-display {
-  font-size: 1.2rem;
-  color: #00d9ff;
-}
-
-.checkpoint-indicator {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: bold;
-  color: #2d3748;
-  border: 2px solid #00d9ff;
-  animation: checkpointPulse 2s ease-in-out infinite;
-}
-
-@keyframes checkpointPulse {
-  0%, 100% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(1.05); }
-}
 
 
 
 
 
-/* Progress Indicator */
-.progress-indicator {
-  position: absolute;
-  bottom: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  text-align: center;
-}
 
-.progress-bar {
-  width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #00d9ff, #48bb78);
-  transition: width 0.3s ease;
-  border-radius: 3px;
-  box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
-}
 
-.progress-text {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  font-weight: 600;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  animation: textGlow 2s ease-in-out infinite;
-}
 
-@keyframes textGlow {
-  0%, 100% { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
-  50% { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 217, 255, 0.3); }
-}
+
+
 
 /* Portfolio Content */
 .portfolio-content {
@@ -557,24 +490,7 @@ body {
     height: 30px;
   }
   
-  .game-ui {
-    top: 10px;
-    left: 10px;
-    right: 10px;
-  }
-  
-  .score-display {
-    padding: 10px 15px;
-    font-size: 0.9rem;
-  }
-  
-  .coins-count {
-    font-size: 1.2rem;
-  }
-  
-  .progress-display {
-    font-size: 1rem;
-  }
+
   
   .sign-board {
     padding: 15px;
@@ -609,14 +525,7 @@ body {
     font-size: 2rem;
   }
   
-  .reward-text {
-    font-size: 2rem;
-  }
-  
-  .checkpoint-reached {
-    font-size: 1.2rem;
-    padding: 3px 10px;
-  }
+
   
   /* Content Cards Mobile */
   .content-card {
@@ -2312,7 +2221,6 @@ body {
 
 /* Contact Form */
 .contact-form {
-  background: rgba(45, 55, 72, 0.8);
   padding: 3rem;
   border-radius: 20px;
   border: 1px solid rgba(0, 217, 255, 0.2);
@@ -2338,7 +2246,7 @@ body {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(45, 55, 72, 0.6);
 }
 
 .form-group input:focus,
@@ -2707,39 +2615,200 @@ body {
 /* Portfolio Content Cards - standing cardboard style */
 .content-card {
   position: absolute;
-  bottom: 105px;
+  top: 50%;
+  transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.95);
   border: 3px solid #8B4513;
   border-radius: 8px;
-  padding: 15px;
-  min-width: 160px;
+  padding: 18px;
+  min-width: 200px;
+  max-width: 320px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   z-index: 10;
+  line-height: 1.4;
+  pointer-events: auto; /* Enable interaction with content cards */
 }
 
-.about-card { left: 50%; }
+.welcome-card { left: 10%; }
+.about-card { left: 60%; }
 .projects-card { left: 110%; }
-.skills-card { left: 170%; }
-.contact-card { left: 230%; }
+.skills-card { left: 160%; }
+.experience-card { left: 210%; }
+.final-contact-card { left: 260%; }
+.contact-form-card { left: 310%; }
 
 .content-card h3 {
-  font-size: 1.1rem;
-  color: #2d3748;
-  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  color: #8B4513;
+  margin: 0 0 12px 0;
   font-weight: bold;
   text-align: center;
+  border-bottom: 2px solid #8B4513;
+  padding-bottom: 5px;
+}
+
+.content-card p {
+  margin: 8px 0;
+  font-size: 0.9rem;
+  color: #2d3748;
+}
+
+.content-card div {
+  margin: 6px 0;
+  font-size: 0.85rem;
+  color: #2d3748;
+}
+
+.content-card strong {
+  color: #8B4513;
+}
+
+.content-card em {
+  color: #4a5568;
+  font-style: italic;
+}
+
+/* Contact Form Styles */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: auto; /* Ensure form is interactable */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #2d3748;
+  font-size: 0.85rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 8px 10px;
+  border: 2px solid #D2B48C;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.95);
+  color: #2d3748;
+  transition: border-color 0.3s ease;
+  pointer-events: auto; /* Ensure form inputs are interactable */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #8B4513;
+  background: rgba(255, 255, 255, 1);
+  color: #2d3748;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #8B4513, #A0522D);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  pointer-events: auto; /* Ensure submit button is clickable */
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #A0522D, #8B4513);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.form-note {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  color: #4a5568;
+}
+
+/* Larger contact form card */
+.contact-form-card {
+  max-width: 350px;
+  min-width: 300px;
 }
 
 .content-card p {
   font-size: 0.85rem;
-  color: #4a5568;
+  color: #2d3748;
   margin: 0 0 4px 0;
   line-height: 1.2;
 }
 
 .content-card div {
   font-size: 0.8rem;
-  color: #4a5568;
+  color: #2d3748;
   margin: 0 0 3px 0;
   line-height: 1.2;
+}
+
+/* Mobile Responsive Styles for Contact Form */
+@media (max-width: 768px) {
+  .content-card {
+    max-width: 280px;
+    min-width: 250px;
+    padding: 15px;
+  }
+  
+  .contact-form-card {
+    max-width: 300px;
+    min-width: 280px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .submit-btn {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-card {
+    max-width: 260px;
+    min-width: 220px;
+    padding: 12px;
+  }
+  
+  .contact-form-card {
+    max-width: 280px;
+    min-width: 250px;
+  }
+  
+  .content-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .form-group label {
+    font-size: 0.8rem;
+  }
 }
