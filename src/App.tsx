@@ -28,6 +28,8 @@ function App() {
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
   const [scrollEventCounter, setScrollEventCounter] = useState<number>(0);
+  const [lastScrollTop, setLastScrollTop] = useState<number>(0);
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
 
   
   // Contact form submission handler
@@ -72,6 +74,11 @@ function App() {
       
       setScrollProgress(scrollPercent);
       
+      // Detect scroll direction
+      const direction = scrollTop > lastScrollTop ? 'down' : 'up';
+      setScrollDirection(direction);
+      setLastScrollTop(scrollTop);
+      
       // Walking animation logic
       setIsScrolling(true);
       
@@ -109,7 +116,7 @@ function App() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollTimeout, scrollEventCounter]);
+  }, [scrollTimeout, scrollEventCounter, lastScrollTop]);
 
 
 
@@ -605,7 +612,9 @@ function App() {
               
          {/* Person Character - stays in center */}
          <div className={`person-character ${isScrolling ? 'walking' : 'idle'}`}
-              style={{ transform: `translateY(${characterJump}px)` }}>
+              style={{ 
+                transform: `translateY(${characterJump}px) ${scrollDirection === 'up' ? 'scaleX(-1)' : ''}` 
+              }}>
            <img 
              src={`/person/person${currentPersonFrame}.png`} 
              alt="Person Character" 
