@@ -76,10 +76,10 @@ body {
 
 .forest-sun {
   position: absolute;
-  top: 10%;
-  right: 20%;
-  width: 120px;
-  height: 120px;
+  top: -200px;
+  right: 15%;
+  width: 800px;
+  height: 800px;
   object-fit: contain;
   z-index: 2;
 }
@@ -517,10 +517,10 @@ body {
   
   /* Mobile responsive adjustments for forest background */
   .forest-sun {
-    width: 80px;
-    height: 80px;
-    top: 10%;
-    right: 15%;
+    width: 140px;
+    height: 140px;
+    top: 8%;
+    right: 10%;
   }
   
   .coin {
