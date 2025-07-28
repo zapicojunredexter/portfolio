@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && cp -r build/* . && git add . && (git commit -m 'Deploy to GitHub Pages' || echo 'No changes to commit') && git push --set-upstream origin main"
+    "deploy-manual": "echo '⚠️ WARNING: GitHub Actions auto-deploy is active. Manual deploy is backup only.' && npm run build && cp -r build/* . && git add . && (git commit -m 'Manual deploy to GitHub Pages (backup)' || echo 'No changes to commit') && git push --set-upstream origin main",
+    "deploy": "echo '✅ Using GitHub Actions for deployment. Push your changes to trigger auto-deploy!' && git status"
   },
   "eslintConfig": {
     "extends": [
