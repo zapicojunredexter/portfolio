@@ -285,10 +285,6 @@ body {
 
 /* Mobile responsive person character */
 @media (max-width: 768px) {
-  .person-character {
-    bottom: 100px;
-  }
-  
   .person-sprite {
     width: 50px;
     max-height: 65px;
@@ -659,6 +655,46 @@ body {
     height: 140px;
     top: 8%;
     right: 10%;
+  }
+
+  /* Mobile parallax fixes - ensure minimum absolute coverage */
+  .parallax-layer {
+    width: max(300%, 2000px); /* Minimum 2000px width */
+  }
+  
+  .forest-sky {
+    width: max(300%, 2000px);
+    left: max(-100%, -800px);
+  }
+  
+  .forest-clouds {
+    width: max(400%, 3000px);
+    left: max(-150%, -1200px);
+  }
+  
+  .forest-mountains-3 {
+    width: max(600%, 4000px);
+    left: max(-250%, -2000px);
+  }
+  
+  .forest-mountains-2 {
+    width: max(800%, 5000px);
+    left: max(-350%, -2500px);
+  }
+  
+  .forest-mountains-1 {
+    width: max(1000%, 6000px);
+    left: max(-450%, -3000px);
+  }
+  
+  .forest-trees {
+    width: max(1500%, 8000px);
+    left: max(-700%, -4000px);
+  }
+  
+  .forest-rocks {
+    width: max(2000%, 10000px);
+    left: max(-950%, -5000px);
   }
   
   .coin {
