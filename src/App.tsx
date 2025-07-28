@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import "./App.css";
 
 interface Section {
@@ -8,7 +8,9 @@ interface Section {
 }
 
 function App() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeSection, setActiveSection] = useState<string>("about");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [sections] = useState<Section[]>([
     { id: "about", title: "About", active: true },
     { id: "projects", title: "Projects", active: false },
@@ -16,9 +18,13 @@ function App() {
     { id: "contact", title: "Contact", active: false },
   ]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [typedText, setTypedText] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isTyping, setIsTyping] = useState(true);
 
   const [scrollProgress, setScrollProgress] = useState<number>(0);
@@ -35,7 +41,7 @@ function App() {
   const [showChatBubble, setShowChatBubble] = useState<boolean>(false);
   const [currentChatIndex, setCurrentChatIndex] = useState<number>(0);
 
-  const chatMessages = [
+  const chatMessages = useMemo(() => [
     "Hey there! I'm Junre, welcome to my interactive portfolio! 🌟",
     "Scroll around to explore different sections and discover my journey! 🚀",
     "I love building scalable systems and leading amazing teams! 💼",
@@ -55,7 +61,7 @@ function App() {
     "Technology changes, but passion for innovation remains constant! 🔥",
     "Cebu City will always be home, but the cloud is my office! ☁️",
     "Click me to see more of my thoughts! 💭",
-  ];
+  ], []);
   const [pausedElements, setPausedElements] = useState<Set<string>>(new Set());
 
   // Auto-scroll for content cards
@@ -147,6 +153,7 @@ function App() {
     const name = formData.get("name");
     const email = formData.get("email");
     const subject = formData.get("subject");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const message = formData.get("message");
 
     // Simple success message for now
@@ -158,21 +165,22 @@ function App() {
     e.currentTarget.reset();
   };
 
-  const textsToType = [
+  const textsToType = useMemo(() => [
     "Building scalable systems and guiding technical teams",
     "Software Development Manager with extensive experience in system architecture and solution management.",
     "I view myself as a work in progress at all times. My main objective is to never stop learning.",
-  ];
+  ], []);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSectionChange = (sectionId: string) => {
     setActiveSection(sectionId);
   };
 
   // Random message picker function
-  const getRandomMessage = () => {
+  const getRandomMessage = useCallback(() => {
     const randomIndex = Math.floor(Math.random() * chatMessages.length);
     setCurrentChatIndex(randomIndex);
-  };
+  }, [chatMessages]);
 
   // Show initial chat bubble on page load
   useEffect(() => {
@@ -182,7 +190,7 @@ function App() {
     }, 2000); // Show initial chat bubble after 2 seconds
 
     return () => clearTimeout(initialChatTimeout);
-  }, []);
+  }, [getRandomMessage]);
 
   // Mouse tracking and scroll-based 3D animation
   useEffect(() => {
@@ -249,7 +257,7 @@ function App() {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrollTimeout, scrollEventCounter, lastScrollTop]);
+  }, [scrollTimeout, scrollEventCounter, lastScrollTop, getRandomMessage]);
 
   // Typewriter effect
   useEffect(() => {
@@ -291,7 +299,7 @@ function App() {
       clearTimeout(initialTimer);
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [textsToType]);
 
   // Calculate game elements based on scroll
   const worldOffset = scrollProgress * -10000; // Background moves across 7 sections including contact form
