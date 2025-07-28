@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import "./App.css";
-import PersonImageTest from "./PersonImageTest";
 
 interface Section {
   id: string;
@@ -223,17 +222,21 @@ function App() {
         clearTimeout(scrollTimeout);
       }
 
-      // Increment scroll counter
-      setScrollEventCounter((prev) => prev + 1);
-
-      // Only change frame every 3 scroll events (adjust this number to make walking faster/slower)
-      if (scrollEventCounter % 3 === 0) {
-        setCurrentPersonFrame((prev) => {
-          if (prev === 1) return 2; // Start walking from frame 2
-          if (prev >= 6) return 2; // Reset to frame 2 after frame 6
-          return prev + 1;
-        });
-      }
+      // Increment scroll counter and update frame
+      setScrollEventCounter((prev) => {
+        const newCounter = prev + 1;
+        
+        // Only change frame every 3 scroll events (adjust this number to make walking faster/slower)
+        if (newCounter % 3 === 0) {
+          setCurrentPersonFrame((currentFrame) => {
+            if (currentFrame === 1) return 2; // Start walking from frame 2
+            if (currentFrame >= 6) return 2; // Reset to frame 2 after frame 6
+            return currentFrame + 1;
+          });
+        }
+        
+        return newCounter;
+      });
 
       // Set timeout to stop walking animation
       const newTimeout = setTimeout(() => {
@@ -307,13 +310,10 @@ function App() {
   const characterJump = Math.sin(scrollProgress * 20) * 5; // Bouncing effect
   console.log("worldOffset", { worldOffset, scrollProgress });
 
-  return (
-    <div className="App">
-      {/* Person Image Test - Remove this after debugging */}
-      <PersonImageTest />
-      
-      {/* Scroll Progress Bar */}
-      <div className="scroll-progress-bar">
+      return (
+      <div className="App">
+        {/* Scroll Progress Bar */}
+        <div className="scroll-progress-bar">
         <div
           className="scroll-progress-fill"
           style={{ width: `${scrollProgress * 100}%` }}
