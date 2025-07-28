@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import "./App.css";
+import PersonImageTest from "./PersonImageTest";
 
 interface Section {
   id: string;
@@ -308,6 +309,9 @@ function App() {
 
   return (
     <div className="App">
+      {/* Person Image Test - Remove this after debugging */}
+      <PersonImageTest />
+      
       {/* Scroll Progress Bar */}
       <div className="scroll-progress-bar">
         <div
