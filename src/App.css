@@ -2815,6 +2815,42 @@ body {
   overflow: hidden;
   opacity: 1;
   transform: translateY(-50%);
+  animation: cardHeartbeat 3s ease-in-out infinite;
+}
+
+/* Heartbeat Animation */
+@keyframes cardHeartbeat {
+  0%, 85% {
+    transform: translateY(-50%) scale(1);
+  }
+  90% {
+    transform: translateY(-50%) scale(1.05);
+  }
+  95% {
+    transform: translateY(-50%) scale(0.98);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* Mobile heartbeat optimization */
+@media (max-width: 768px) {
+  .content-card {
+    animation-duration: 4s; /* Slower on mobile for performance */
+  }
+  
+  @keyframes cardHeartbeat {
+    0%, 90% {
+      transform: translateY(-50%) scale(1);
+    }
+    95% {
+      transform: translateY(-50%) scale(1.03); /* Smaller scale on mobile */
+    }
+    100% {
+      transform: translateY(-50%) scale(1);
+    }
+  }
 }
 
 .content-card::before {
@@ -2836,20 +2872,40 @@ body {
     0 8px 16px rgba(139, 69, 19, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
   border-color: #A0522D;
+  animation-play-state: paused; /* Pause heartbeat on hover */
 }
 
 .content-card:hover::before {
   left: 100%;
 }
 
-.welcome-card { left: 5%; }
-.about-card { left: 45%; }
-.projects-card { left: 85%; }
-.skills-card { left: 125%; }
-.experience-card { left: 165%; }
-.final-contact-card { left: 205%; }
+.welcome-card { 
+  left: 5%; 
+  animation-delay: 0s;
+}
+.about-card { 
+  left: 45%; 
+  animation-delay: 0.5s;
+}
+.projects-card { 
+  left: 85%; 
+  animation-delay: 1s;
+}
+.skills-card { 
+  left: 125%; 
+  animation-delay: 1.5s;
+}
+.experience-card { 
+  left: 165%; 
+  animation-delay: 2s;
+}
+.final-contact-card { 
+  left: 205%; 
+  animation-delay: 2.5s;
+}
 .contact-form-card { 
   left: 245%; 
+  animation-delay: 1s;
 }
 
 /* Legacy content card styles - updated for new structure */
