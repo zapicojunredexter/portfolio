@@ -320,17 +320,17 @@ function App() {
 
   // Calculate game elements based on scroll with device-specific coefficients
   const getWorldOffsetCoefficient = () => {
-    if (typeof window !== 'undefined') {
-      const width = window.innerWidth;
-      // Tablet range: 768px to 1024px
-      if (width <= 768) {
-        return -5000; // Tablet coefficient
-      }
-      if (width <= 1024) {
-        return -6500; // Tablet coefficient
-      }
-    }
-    return -10000; // Default coefficient for desktop and mobile
+    // if (typeof window !== 'undefined') {
+    //   const width = window.innerWidth;
+    //   // Tablet range: 768px to 1024px
+    //   if (width <= 768) {
+    //     return -5000; // Tablet coefficient
+    //   }
+    //   if (width <= 1024) {
+    //     return -6500; // Tablet coefficient
+    //   }
+    // }
+    return -10500; // Default coefficient for desktop and mobile
   };
   
   const worldOffset = scrollProgress * getWorldOffsetCoefficient();

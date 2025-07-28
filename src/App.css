@@ -40,8 +40,9 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100svw;
-  height: 100svh;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100;
   z-index: 10;
   overflow: hidden;
 }
@@ -2983,8 +2984,6 @@ body {
 /* Mobile Responsive Styles for Contact Form */
 @media (max-width: 768px) and (orientation: portrait) {
   .content-card {
-    max-width: 280px;
-    min-width: 250px;
     padding: 15px;
     height: 70vh;
     max-height: 70vh;
@@ -3060,13 +3059,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  
-  .contact-form-card {
-    width: 60vw;
-    min-width: 280px;
-    max-width: 420px;
-  }
-  
   .form-group input,
   .form-group select,
   .form-group textarea {
@@ -3105,12 +3097,6 @@ body {
     min-width: 500px;
     max-width: 500px;
     padding: 12px;
-  }
-  
-  .contact-form-card {
-    width: 70vw;
-    min-width: 250px;
-    max-width: 350px;
   }
   
   .content-card h3 {
