@@ -318,10 +318,23 @@ function App() {
     };
   }, [textsToType]);
 
-  // Calculate game elements based on scroll
-  const worldOffset = scrollProgress * -10000; // Background moves across 7 sections including contact form
+  // Calculate game elements based on scroll with device-specific coefficients
+  const getWorldOffsetCoefficient = () => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      // Tablet range: 768px to 1024px
+      if (width <= 768) {
+        return -5000; // Tablet coefficient
+      }
+      if (width <= 1024) {
+        return -6500; // Tablet coefficient
+      }
+    }
+    return -10000; // Default coefficient for desktop and mobile
+  };
+  
+  const worldOffset = scrollProgress * getWorldOffsetCoefficient();
   const characterJump = Math.sin(scrollProgress * 20) * 5; // Bouncing effect
-  console.log("worldOffset", { worldOffset, scrollProgress });
 
       return (
       <div className="App">

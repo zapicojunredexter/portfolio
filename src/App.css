@@ -40,8 +40,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100svw;
+  height: 100svh;
   z-index: 10;
   overflow: hidden;
 }
@@ -662,10 +662,6 @@ body {
     width: max(300%, 2000px); /* Minimum 2000px width */
   }
   
-  .forest-sky {
-    width: max(300%, 2000px);
-    left: max(-100%, -800px);
-  }
   
   .forest-clouds {
     width: max(400%, 3000px);
