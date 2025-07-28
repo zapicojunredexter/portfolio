@@ -2985,12 +2985,85 @@ body {
 }
 
 /* Mobile Responsive Styles for Contact Form */
-@media (max-width: 768px) {
+@media (max-width: 768px) and (orientation: portrait) {
   .content-card {
     max-width: 280px;
     min-width: 250px;
     padding: 15px;
+    height: 70vh;
+    max-height: 70vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    top: 45%; /* Adjust position slightly for better centering */
   }
+  
+  /* Ensure content inside cards is scrollable */
+  .content-card > * {
+    flex-shrink: 0;
+  }
+  
+  /* Make scrollable containers expand to fill available space */
+  .projects-list {
+    flex: 1;
+    max-height: none;
+    min-height: 0;
+    overflow-y: auto;
+  }
+  
+  .skills-categories {
+    flex: 1;
+    max-height: none;
+    min-height: 0;
+    overflow-y: auto;
+  }
+  
+  .timeline {
+    flex: 1;
+    max-height: none;
+    min-height: 0;
+    overflow-y: auto;
+  }
+  
+  /* Ensure cards with scrollable content use flex properly */
+  .projects-card,
+  .skills-card,
+  .experience-card {
+    gap: 8px;
+  }
+  
+  /* Keep headers and intro text compact */
+  .content-card h3 {
+    flex-shrink: 0;
+    margin-bottom: 8px;
+  }
+  
+  .content-card > p {
+    flex-shrink: 0;
+    margin-bottom: 12px;
+  }
+  
+  /* Custom scrollbar for mobile cards */
+  .content-card::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .content-card::-webkit-scrollbar-track {
+    background: rgba(139, 69, 19, 0.1);
+    border-radius: 3px;
+  }
+  
+  .content-card::-webkit-scrollbar-thumb {
+    background: rgba(139, 69, 19, 0.4);
+    border-radius: 3px;
+  }
+  
+  .content-card::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 69, 19, 0.6);
+  }
+}
+
+@media (max-width: 768px) {
   
   .contact-form-card {
     width: 60vw;
@@ -3032,9 +3105,9 @@ body {
 
 @media (max-width: 480px) {
   .content-card {
-    width: 70vw;
-    min-width: 220px;
-    max-width: 320px;
+    width: 500px;
+    min-width: 500px;
+    max-width: 500px;
     padding: 12px;
   }
   
@@ -3401,6 +3474,15 @@ body {
   margin: -4px 0;
   scrollbar-width: thin;
   scrollbar-color: rgba(139, 69, 19, 0.3) transparent;
+
+}
+
+
+@media (max-width: 768px) {
+  .projects-list {
+    height: 500px;
+    max-height: 500px;
+  }
 }
 
 /* Custom scrollbar styles */
@@ -3593,6 +3675,13 @@ body {
   scrollbar-color: rgba(139, 69, 19, 0.3) transparent;
 }
 
+@media (max-width: 768px) {
+  .skills-categories {
+    height: 480px;
+    max-height: 480px;
+  }
+}
+
 /* Custom scrollbar styles for skills */
 .skills-categories::-webkit-scrollbar {
   width: 6px;
@@ -3783,6 +3872,13 @@ body {
   margin-right: -8px;
   scrollbar-width: thin;
   scrollbar-color: rgba(139, 69, 19, 0.3) transparent;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    height: 500px;
+    max-height: 500px;
+  }
 }
 
 /* Custom scrollbar styles for timeline */
