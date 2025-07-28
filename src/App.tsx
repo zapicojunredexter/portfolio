@@ -182,6 +182,19 @@ function App() {
     setCurrentChatIndex(randomIndex);
   }, [chatMessages]);
 
+  // Preload person images
+  useEffect(() => {
+    const preloadImages = () => {
+      for (let i = 1; i <= 6; i++) {
+        const img = new Image();
+        img.src = `${process.env.PUBLIC_URL}/person/person${i}.png`;
+        console.log(`Preloading person${i}.png`);
+      }
+    };
+    
+    preloadImages();
+  }, []);
+
   // Show initial chat bubble on page load
   useEffect(() => {
     const initialChatTimeout = setTimeout(() => {
@@ -226,8 +239,8 @@ function App() {
       setScrollEventCounter((prev) => {
         const newCounter = prev + 1;
         
-        // Only change frame every 3 scroll events (adjust this number to make walking faster/slower)
-        if (newCounter % 3 === 0) {
+        // Only change frame every 8 scroll events (adjust this number to make walking faster/slower)
+        if (newCounter % 8 === 0) {
           setCurrentPersonFrame((currentFrame) => {
             if (currentFrame === 1) return 2; // Start walking from frame 2
             if (currentFrame >= 6) return 2; // Reset to frame 2 after frame 6
@@ -249,7 +262,7 @@ function App() {
           getRandomMessage(); // Pick random message
           setShowChatBubble(true);
         }, 500); // Show chat bubble 500ms after stopping
-      }, 200); // Stop animation 200ms after scrolling stops
+      }, 800); // Stop animation 800ms after scrolling stops (longer delay)
 
       setScrollTimeout(newTimeout);
     };
