@@ -40,6 +40,9 @@ function App() {
   // Chat bubble state
   const [showChatBubble, setShowChatBubble] = useState<boolean>(false);
   const [currentChatIndex, setCurrentChatIndex] = useState<number>(0);
+  
+  // Jump animation state
+  const [isJumping, setIsJumping] = useState<boolean>(false);
 
   const chatMessages = useMemo(() => [
     "Hey there! I'm Junre, welcome to my interactive portfolio! 🌟",
@@ -181,6 +184,18 @@ function App() {
     const randomIndex = Math.floor(Math.random() * chatMessages.length);
     setCurrentChatIndex(randomIndex);
   }, [chatMessages]);
+
+  // Handle background click to make character jump
+  const handleBackgroundClick = useCallback((e: React.MouseEvent) => {
+    // Only trigger if clicking on the background (not on cards or UI elements)
+    if (e.target === e.currentTarget && !isJumping) {
+      setIsJumping(true);
+      // Reset jump state after animation completes
+      setTimeout(() => {
+        setIsJumping(false);
+      }, 600); // Jump animation duration
+    }
+  }, [isJumping]);
 
   // Preload person images
   useEffect(() => {
@@ -347,7 +362,7 @@ function App() {
       </div>
 
       {/* Mario-style Game Scene */}
-      <div className="mario-game-scene">
+      <div className="mario-game-scene" onClick={handleBackgroundClick}>
         {/* Forest Parallax Background Layers */}
                  <div
            className="parallax-layer sky-layer"
@@ -978,7 +993,7 @@ function App() {
 
         {/* Person Character - stays in center */}
         <div
-          className={`person-character ${isScrolling ? "walking" : "idle"}`}
+          className={`person-character ${isScrolling ? "walking" : "idle"} ${isJumping ? "jumping" : ""}`}
           style={{
             transform: `translateY(${characterJump}px) ${
               scrollDirection === "up" ? "scaleX(-1)" : ""

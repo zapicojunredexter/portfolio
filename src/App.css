@@ -300,6 +300,16 @@ body {
   animation: personIdle 3s ease-in-out infinite;
 }
 
+.person-character.jumping .person-sprite {
+  animation: personJump 0.6s ease-out forwards !important;
+}
+
+/* Jump animation takes priority over walking/idle */
+.person-character.jumping.walking .person-sprite,
+.person-character.jumping.idle .person-sprite {
+  animation: personJump 0.6s ease-out forwards !important;
+}
+
 /* Character body styles removed - using person sprites now */
 
 @keyframes personBounce {
@@ -317,6 +327,40 @@ body {
   }
   50% { 
     transform: translateY(-1px) scale(1.01); 
+  }
+}
+
+@keyframes personJump {
+  0% { 
+    transform: translateY(0px) scale(1); 
+  }
+  30% { 
+    transform: translateY(-50px) scale(1.1); 
+  }
+  60% { 
+    transform: translateY(-60px) scale(1.05); 
+  }
+  100% { 
+    transform: translateY(0px) scale(1); 
+  }
+}
+
+/* Mobile jump optimization */
+@media (max-width: 768px) {
+  @keyframes personJump {
+    0% { 
+      transform: translateY(0px) scale(1); 
+    }
+    50% { 
+      transform: translateY(-40px) scale(1.05); 
+    }
+    100% { 
+      transform: translateY(0px) scale(1); 
+    }
+  }
+  
+  .person-character.jumping .person-sprite {
+    animation-duration: 0.5s !important;
   }
 }
 
