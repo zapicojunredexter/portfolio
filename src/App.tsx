@@ -220,6 +220,26 @@ function App() {
     return () => clearTimeout(initialChatTimeout);
   }, [getRandomMessage]);
 
+  // Handle viewport height for mobile browsers (Safari toolbar issue)
+  useEffect(() => {
+    const setViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    // Set initial viewport height
+    setViewportHeight();
+
+    // Update on resize (handles Safari toolbar show/hide)
+    window.addEventListener('resize', setViewportHeight);
+    window.addEventListener('orientationchange', setViewportHeight);
+
+    return () => {
+      window.removeEventListener('resize', setViewportHeight);
+      window.removeEventListener('orientationchange', setViewportHeight);
+    };
+  }, []);
+
   // Mouse tracking and scroll-based 3D animation
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
