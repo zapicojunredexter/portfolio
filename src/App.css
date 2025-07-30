@@ -267,7 +267,7 @@ body {
 /* Person Character - stays centered */
 .person-character {
   position: absolute;
-  bottom: 20px; /* Elevated from bottom to avoid Safari toolbar */
+  bottom: 0; /* Elevated from bottom to avoid Safari toolbar */
   left: 50%;
   transform: translateX(-50%);
   z-index: 25;
@@ -277,7 +277,7 @@ body {
 /* Enhanced mobile positioning for person character */
 @media (max-width: 768px) {
   .person-character {
-    bottom: max(20px, env(safe-area-inset-bottom, 20px));
+    bottom: max(0, env(safe-area-inset-bottom, 20px));
   }
 }
 
