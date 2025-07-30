@@ -353,20 +353,30 @@ function App() {
     };
   }, [textsToType]);
 
+  // Get device width
+  const [deviceWidth, setDeviceWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1920);
+
+  // Update device width on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setDeviceWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Calculate game elements based on scroll with device-specific coefficients
   const getWorldOffsetCoefficient = () => {
-    // if (typeof window !== 'undefined') {
-    //   const width = window.innerWidth;
-    //   // Tablet range: 768px to 1024px
-    //   if (width <= 768) {
-    //     return -5000; // Tablet coefficient
-    //   }
-    //   if (width <= 1024) {
-    //     return -6500; // Tablet coefficient
-    //   }
-    // }
-    return -10500; // Default coefficient for desktop and mobile
+    // Fixed pixel positioning: furthest card at 4500px + card width (500px) + margin (200px) = 5200px
+    // Consistent 700px gaps between cards, 300px from left edge
+    
+    console.log('Current device width:', deviceWidth);
+
+    // NOTE: ADJUST THIS VALUE TO CHANGE THE GAME WIDTH
+    return -5900 + (deviceWidth || 0);
   };
+  const gameWidth = getWorldOffsetCoefficient() * -1;
   
   const worldOffset = scrollProgress * getWorldOffsetCoefficient();
   const characterJump = Math.sin(scrollProgress * 20) * 5; // Bouncing effect
@@ -1039,8 +1049,8 @@ function App() {
         )}
       </div>
 
-      {/* Spacer div to enable scrolling - 7 sections including contact form */}
-      <div style={{ height: "1000vh" }}></div>
+      {/* Spacer div to enable scrolling - optimized for fixed 700px card gaps */}
+      <div style={{ height: `${gameWidth}px` }}></div>
     </div>
   );
 }

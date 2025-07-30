@@ -753,9 +753,9 @@ body {
   /* Content Cards Mobile */
   .content-card {
     padding: 15px;
-    width: 60vw;
-    min-width: 250px;
-    max-width: 400px;
+    width: 500px;
+    min-width: 500px;
+    max-width: 500px;
     bottom: 100px;
   }
   
@@ -2848,9 +2848,9 @@ body {
   border: 4px solid #8B4513;
   border-radius: 8px;
   padding: 24px;
-  width: 40vw;
-  min-width: 300px;
-  max-width: 600px;
+  width: 500px;
+  min-width: 500px;
+  max-width: 500px;
   box-shadow: 
     0 8px 24px rgba(0, 0, 0, 0.15),
     0 4px 8px rgba(139, 69, 19, 0.1),
@@ -2926,33 +2926,33 @@ body {
 .content-card:hover::before {
   left: 100%;
 }
-
+/* n card * 500 + n card * 300 + 300 */
 .welcome-card { 
-  left: 5%; 
+  left: 300px; 
   animation-delay: 0s;
 }
 .about-card { 
-  left: 45%; 
+  left: 1100px; 
   animation-delay: 0.5s;
 }
 .projects-card { 
-  left: 85%; 
+  left: 1900px; 
   animation-delay: 1s;
 }
 .skills-card { 
-  left: 125%; 
+  left: 2700px; 
   animation-delay: 1.5s;
 }
 .experience-card { 
-  left: 165%; 
+  left: 3500px; 
   animation-delay: 2s;
 }
 .final-contact-card { 
-  left: 205%; 
+  left: 4300px; 
   animation-delay: 2.5s;
 }
 .contact-form-card { 
-  left: 245%; 
+  left: 5100px; 
   animation-delay: 1s;
 }
 
@@ -3064,11 +3064,11 @@ body {
   color: #4a5568;
 }
 
-/* Larger contact form card */
+/* Contact form card - consistent 500px width */
 .contact-form-card {
-  width: 40vw;
-  min-width: 350px;
-  max-width: 650px;
+  width: 500px;
+  min-width: 500px;
+  max-width: 500px;
 }
 
 .content-card p {
