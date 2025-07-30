@@ -274,30 +274,6 @@ body {
   /* Removed transition for instant flip response */
 }
 
-/* Enhanced mobile positioning for person character */
-@media (max-width: 768px) {
-  .person-character {
-    bottom: max(0, env(safe-area-inset-bottom, 20px));
-  }
-}
-
-/* iOS Safari specific adjustments */
-@supports (-webkit-touch-callout: none) {
-  .person-character {
-    bottom: max(30px, env(safe-area-inset-bottom, 30px));
-  }
-  
-  @media (max-width: 768px) {
-    .person-character {
-      bottom: max(40px, calc(env(safe-area-inset-bottom, 20px) + 20px));
-    }
-    
-    .chat-bubble {
-      bottom: max(115px, calc(env(safe-area-inset-bottom, 20px) + 95px));
-    }
-  }
-}
-
 .person-sprite {
   width: 60px;
   height: auto;
