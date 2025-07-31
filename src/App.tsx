@@ -48,6 +48,7 @@ function App() {
   
   // Jump animation state
   const [isJumping, setIsJumping] = useState<boolean>(false);
+  const [hasWelcomeJumped, setHasWelcomeJumped] = useState<boolean>(false);
 
   const chatMessages = useMemo(() => [
     "Hey there! I'm Junre, welcome to my interactive portfolio! 🌟",
@@ -252,6 +253,24 @@ function App() {
 
     return () => clearTimeout(initialChatTimeout);
   }, [getRandomMessage]);
+
+  // Welcome jump when loading finishes
+  useEffect(() => {
+    if (!isLoading && !hasWelcomeJumped) {
+      // Delay the jump slightly to let the page settle
+      const welcomeJumpTimeout = setTimeout(() => {
+        setIsJumping(true);
+        setHasWelcomeJumped(true);
+        
+        // Reset jump state after animation completes
+        setTimeout(() => {
+          setIsJumping(false);
+        }, 600); // Jump animation duration
+      }, 300); // Small delay after loading screen disappears
+
+      return () => clearTimeout(welcomeJumpTimeout);
+    }
+  }, [isLoading, hasWelcomeJumped]);
 
   // Handle viewport height for mobile browsers (Safari toolbar issue)
   useEffect(() => {
