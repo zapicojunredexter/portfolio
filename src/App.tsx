@@ -8,6 +8,11 @@ interface Section {
 }
 
 function App() {
+  // Loading state
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [loadingProgress, setLoadingProgress] = useState<number>(0);
+  const [loadingCharacterFrame, setLoadingCharacterFrame] = useState<number>(2);
+  
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeSection, setActiveSection] = useState<string>("about");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -66,6 +71,34 @@ function App() {
     "Click me to see more of my thoughts! 💭",
   ], []);
   const [pausedElements, setPausedElements] = useState<Set<string>>(new Set());
+
+  // Loading animation effect
+  useEffect(() => {
+    // Separate timers for smooth animation
+    const loadingTimer = setInterval(() => {
+      setLoadingProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(loadingTimer);
+          setTimeout(() => setIsLoading(false), 500); // Small delay for smooth transition
+          return 100;
+        }
+        return prev + 1; // Increment by 1% every 40ms (4 seconds total)
+      });
+    }, 40);
+
+    // Character running animation - optimized timing for smooth running
+    const frameTimer = setInterval(() => {
+      setLoadingCharacterFrame((currentFrame) => {
+        if (currentFrame >= 6) return 2; // Reset to frame 2 after frame 6
+        return currentFrame + 1;
+      });
+    }, 120); // 120ms per frame for smooth running animation
+
+    return () => {
+      clearInterval(loadingTimer);
+      clearInterval(frameTimer);
+    };
+  }, []);
 
   // Auto-scroll for content cards
   useEffect(() => {
@@ -383,6 +416,65 @@ function App() {
 
       return (
       <div className="App">
+        {/* Loading Screen */}
+        {isLoading && (
+          <div className="loading-screen">
+            <div className="loading-forest">
+              {/* Animated background layers */}
+              <div className="loading-sky" style={{ opacity: loadingProgress > 10 ? 1 : 0 }}>
+                <div className="loading-sun" style={{ opacity: loadingProgress > 60 ? 1 : 0 }}></div>
+              </div>
+              <div className="loading-mountains" style={{ 
+                opacity: loadingProgress > 20 ? 1 : 0,
+                transform: `translateY(${Math.max(0, 50 - loadingProgress/2)}px)`
+              }}></div>
+              <div className="loading-trees" style={{ 
+                opacity: loadingProgress > 40 ? 1 : 0,
+                transform: `translateY(${Math.max(0, 30 - loadingProgress/3)}px)`
+              }}></div>
+              
+              {/* Character runs across from start */}
+              {loadingProgress > 0 && (
+                <div className="loading-character">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/person/person${loadingCharacterFrame}.png`}
+                    alt="Loading Character"
+                    className="loading-character-sprite"
+                  />
+                </div>
+              )}
+            </div>
+            
+            {/* Loading UI */}
+            <div className="loading-ui">
+              <h1 className="loading-title">JUNRE'S DIGITAL FOREST</h1>
+              <div className="loading-subtitle">
+                {loadingProgress < 30 && "🏃‍♂️ Character running to adventure..."}
+                {loadingProgress >= 30 && loadingProgress < 60 && "🌱 Growing the forest..."}
+                {loadingProgress >= 60 && loadingProgress < 85 && "🌲 Adding the trees..."}
+                {loadingProgress >= 85 && "👨‍💻 Adventure ready!"}
+              </div>
+              
+              {/* Progress Bar */}
+              <div className="loading-progress-container">
+                <div className="loading-progress-bar">
+                  <div 
+                    className="loading-progress-fill" 
+                    style={{ width: `${loadingProgress}%` }}
+                  ></div>
+                </div>
+                <div className="loading-percentage">{Math.round(loadingProgress)}%</div>
+              </div>
+              
+              {loadingProgress === 100 && (
+                <div className="loading-complete">
+                  <div className="press-any-key">✨ Adventure Ready! ✨</div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Scroll Progress Bar */}
         <div className="scroll-progress-bar">
         <div
