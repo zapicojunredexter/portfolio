@@ -219,6 +219,16 @@ function App() {
     setCurrentChatIndex(randomIndex);
   }, [chatMessages]);
 
+  // Enhanced message picker for instant display
+  const showNewMessage = useCallback(() => {
+    setShowChatBubble(false); // Hide bubble briefly
+    getRandomMessage(); // Pick new message
+    // Quick reappear with new message
+    setTimeout(() => {
+      setShowChatBubble(true);
+    }, 150); // Slightly longer for smooth transition
+  }, [getRandomMessage]);
+
   // Handle background click to make character jump
   const handleBackgroundClick = useCallback((e: React.MouseEvent) => {
     // Only trigger if clicking on the background (not on cards or UI elements)
@@ -248,7 +258,7 @@ function App() {
   useEffect(() => {
     const initialChatTimeout = setTimeout(() => {
       getRandomMessage(); // Pick random message
-      setShowChatBubble(true);
+      setShowChatBubble(true); // Show immediately since it's the first message
     }, 2000); // Show initial chat bubble after 2 seconds
 
     return () => clearTimeout(initialChatTimeout);
@@ -314,8 +324,9 @@ function App() {
       // Walking animation logic
       setIsScrolling(true);
 
-      // Hide chat bubble when scrolling starts
+      // Hide chat bubble when scrolling starts and prepare new message
       setShowChatBubble(false);
+      getRandomMessage(); // Pick new message while bubble is hidden
 
       // Clear existing timeout
       if (scrollTimeout) {
@@ -344,9 +355,8 @@ function App() {
         setCurrentPersonFrame(1); // Reset to idle frame
         setScrollEventCounter(0); // Reset counter when stopping
 
-        // Show chat bubble when character becomes idle
+        // Show chat bubble when character becomes idle (message already prepared)
         setTimeout(() => {
-          getRandomMessage(); // Pick random message
           setShowChatBubble(true);
         }, 500); // Show chat bubble 500ms after stopping
       }, 800); // Stop animation 800ms after scrolling stops (longer delay)
@@ -1150,7 +1160,7 @@ function App() {
 
         {/* Chat Bubble - positioned independently */}
         {showChatBubble && !isScrolling && (
-          <div className="chat-bubble" onClick={getRandomMessage}>
+          <div className="chat-bubble" onClick={showNewMessage}>
             <div className="chat-bubble-content">
               {chatMessages[currentChatIndex]}
             </div>
