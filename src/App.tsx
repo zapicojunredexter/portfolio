@@ -867,6 +867,10 @@ function App() {
                             height: '800px'
                           }}
                         />
+                        <div 
+                          className="iframe-overlay" 
+                          onClick={() => window.open('https://zapicojunredexter.github.io/nice-shot-creatives/', '_blank')}
+                        />
                       </div>
                     </div>
                   </div>
@@ -917,6 +921,10 @@ function App() {
                             width: '1280px',
                             height: '800px'
                           }}
+                        />
+                        <div 
+                          className="iframe-overlay" 
+                          onClick={() => window.open('https://zapicojunredexter.github.io/terratech/', '_blank')}
                         />
                       </div>
                     </div>
@@ -969,6 +977,10 @@ function App() {
                             height: '800px'
                           }}
                         />
+                        <div 
+                          className="iframe-overlay" 
+                          onClick={() => window.open('https://zapicojunredexter.github.io/beach-house/', '_blank')}
+                        />
                       </div>
                     </div>
                   </div>
@@ -1020,6 +1032,10 @@ function App() {
                             height: '800px'
                           }}
                         />
+                        <div 
+                          className="iframe-overlay" 
+                          onClick={() => window.open('https://zapicojunredexter.github.io/bakeshop/', '_blank')}
+                        />
                       </div>
                     </div>
                   </div>
@@ -1070,6 +1086,10 @@ function App() {
                             width: '1280px',
                             height: '800px'
                           }}
+                        />
+                        <div 
+                          className="iframe-overlay" 
+                          onClick={() => window.open('https://zapicojunredexter.github.io/ce-portfolio/', '_blank')}
                         />
                       </div>
                     </div>
