@@ -3232,21 +3232,25 @@ body {
   left: 1900px; 
   animation-delay: 1s;
 }
-.skills-card { 
+.innovation-card { 
   left: 2700px; 
+  animation-delay: 1.25s;
+}
+.skills-card { 
+  left: 3500px; 
   animation-delay: 1.5s;
 }
 .experience-card { 
-  left: 3500px; 
+  left: 4300px; 
   animation-delay: 2s;
 }
 .final-contact-card { 
-  left: 4300px; 
+  left: 5100px; 
   animation-delay: 2.5s;
 }
 .contact-form-card { 
-  left: 5100px; 
-  animation-delay: 1s;
+  left: 5900px; 
+  animation-delay: 3s;
 }
 
 /* Legacy content card styles - updated for new structure */
@@ -4725,6 +4729,311 @@ body {
   color: #4a5568;
   font-weight: normal;
   line-height: 1.3;
+}
+
+/* Innovation Hub Card Styles */
+.innovation-card .card-icon.glow {
+  animation: iconGlow 2s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% { 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    transform: scale(1);
+  }
+  50% { 
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 25px rgba(255, 215, 0, 0.4);
+    transform: scale(1.1);
+  }
+}
+
+.innovation-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.innovation-item {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 140, 0, 0.05));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.innovation-item:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+  border-color: rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+.innovation-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.innovation-icon {
+  font-size: 1.2rem;
+  animation: innovationIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes innovationIconFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(5deg); }
+  50% { transform: translateY(-5px) rotate(0deg); }
+  75% { transform: translateY(-3px) rotate(-5deg); }
+}
+
+.innovation-header h4 {
+  font-size: 0.9rem;
+  color: #8B4513;
+  margin: 0;
+  font-weight: bold;
+}
+
+.innovation-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.tech-badge {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #8B4513;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+}
+
+.innovation-description p {
+  font-size: 0.7rem;
+  color: #4a5568;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Project Preview Styles */
+.project-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 6px;
+  background: rgba(255, 215, 0, 0.05);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.preview-image {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.preview-icon {
+  font-size: 1.2rem;
+  animation: previewIconFloat 2s ease-in-out infinite;
+}
+
+@keyframes previewIconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.project-type {
+  font-size: 0.6rem;
+  color: #8B4513;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-url {
+  font-size: 0.5rem;
+  color: #4a5568;
+  font-family: 'Courier New', monospace;
+}
+
+.project-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 6px;
+}
+
+.feature {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.15));
+  color: #8B4513;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.5rem;
+  font-weight: bold;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.innovation-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.future-icon {
+  font-size: 1.1rem;
+  animation: futureIconSpin 4s linear infinite;
+}
+
+@keyframes futureIconSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.innovation-footer p {
+  font-size: 0.7rem;
+  color: #8B4513;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Project Preview Frame Styles */
+.project-preview-frame {
+  margin-top: 12px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 215, 0, 0.02);
+  /* Ensure proper clipping for scaled iframes */
+  position: relative;
+  height: 280px; /* Fixed height for the preview frame */
+  /* Container for scaled iframe - removed flexbox */
+  display: block;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2); /* Back to border-bottom since header is above */
+  height: 40px; /* Fixed height for consistent spacing */
+  box-sizing: border-box;
+}
+
+.preview-label {
+  font-size: 0.7rem;
+  color: #8B4513;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.preview-link {
+  font-size: 0.6rem;
+  color: #8B4513;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.preview-link:hover {
+  color: #FFA500;
+  transform: scale(1.05);
+}
+
+.iframe-wrapper {
+  width: 100% !important;
+  height: 300px !important; /* Adjusted height to maintain 16:12 aspect ratio */
+  overflow: hidden !important;
+  position: relative !important;
+  /* Remove flexbox centering to allow iframe to fill space */
+  display: block !important;
+}
+
+
+
+.project-iframe {
+  border: none !important;
+  background: #ffffff !important;
+  transition: all 0.3s ease !important;
+  /* Position the iframe to fill the entire preview area */
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) scale(0.3125) !important; /* Scale to fill width: 400px ÷ 1280px = 0.3125 */
+  transform-origin: center top !important;
+  /* The scaling and dimensions are set inline */
+  z-index: 1 !important;
+}
+
+.project-iframe:hover {
+  /* Remove transform scale on hover since we're already scaling the content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Portfolio Preview Placeholder */
+.portfolio-preview {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 140, 0, 0.05));
+}
+
+.preview-placeholder {
+  text-align: center;
+  padding: 20px;
+}
+
+.preview-icon-large {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 8px;
+  animation: previewIconLargeFloat 3s ease-in-out infinite;
+}
+
+@keyframes previewIconLargeFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.1); }
+}
+
+.preview-placeholder p {
+  font-size: 0.8rem;
+  color: #8B4513;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+}
+
+.preview-subtitle {
+  font-size: 0.6rem;
+  color: #4a5568;
+  font-style: italic;
 }
 
 

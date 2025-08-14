@@ -105,6 +105,7 @@ function App() {
   useEffect(() => {
     const scrollableElements = [
       { selector: ".projects-list", speed: 1 },
+      { selector: ".innovation-grid", speed: 0.8 },
       { selector: ".skills-categories", speed: 0.8 },
       { selector: ".timeline", speed: 0.6 },
     ];
@@ -430,13 +431,14 @@ function App() {
 
   // Calculate game elements based on scroll with device-specific coefficients
   const getWorldOffsetCoefficient = () => {
-    // Fixed pixel positioning: furthest card at 4500px + card width (500px) + margin (200px) = 5200px
+    // Fixed pixel positioning: furthest card at 5900px + card width (500px) + margin (200px) = 6600px
     // Consistent 700px gaps between cards, 300px from left edge
+    // Added Innovation Hub card, removed Achievement Gallery
     
     console.log('Current device width:', deviceWidth);
 
     // NOTE: ADJUST THIS VALUE TO CHANGE THE GAME WIDTH
-    return -5900 + (deviceWidth || 0);
+    return -6600 + (deviceWidth || 0);
   };
   const gameWidth = getWorldOffsetCoefficient() * -1;
   
@@ -810,6 +812,323 @@ function App() {
               </div>
             </div>
           </div>
+
+          {/* Innovation Hub Card - New */}
+          <div className="content-card innovation-card">
+            <div className="card-header">
+              <div className="card-icon glow">💡</div>
+              <h3>Innovation Hub</h3>
+            </div>
+            <div className="card-content">
+              <div className="innovation-grid">
+                <div className="innovation-item">
+                  <div className="innovation-header">
+                    <span className="innovation-icon">📸</span>
+                    <h4>Nice Shot Creatives</h4>
+                  </div>
+                  <div className="innovation-details">
+                    <div className="project-preview">
+                      <div className="preview-image">
+                        <span className="preview-icon">📸</span>
+                      </div>
+                      <div className="preview-info">
+                        <span className="project-type">Photography Studio</span>
+                        <span className="project-url">niceshotcreatives.com</span>
+                      </div>
+                    </div>
+                    <div className="innovation-tech">
+                      <span className="tech-badge">React</span>
+                      <span className="tech-badge">CSS3</span>
+                      <span className="tech-badge">Responsive</span>
+                    </div>
+                    <div className="innovation-description">
+                      <p>Professional photography studio website with booking system and portfolio showcase</p>
+                    </div>
+                    <div className="project-features">
+                      <span className="feature">📱 Mobile-First Design</span>
+                      <span className="feature">📅 Booking Integration</span>
+                      <span className="feature">🖼️ Portfolio Gallery</span>
+                    </div>
+                    <div className="project-preview-frame">
+                      <div className="preview-header">
+                        <span className="preview-label">Live Preview</span>
+                        <a href="https://zapicojunredexter.github.io/nice-shot-creatives/" target="_blank" rel="noopener noreferrer" className="preview-link">
+                          🌐 Open Full Site
+                        </a>
+                      </div>
+                      <div className="iframe-wrapper">
+                        <iframe 
+                          src="https://zapicojunredexter.github.io/nice-shot-creatives/"
+                          title="Nice Shot Creatives Preview"
+                          className="project-iframe"
+                          loading="lazy"
+                          style={{
+                            width: '1280px',
+                            height: '800px'
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="innovation-item">
+                  <div className="innovation-header">
+                    <span className="innovation-icon">🖥️</span>
+                    <h4>TerraTech Solutions</h4>
+                  </div>
+                  <div className="innovation-details">
+                    <div className="project-preview">
+                      <div className="preview-image">
+                        <span className="preview-icon">🖥️</span>
+                      </div>
+                      <div className="preview-info">
+                        <span className="project-type">Tech Company</span>
+                        <span className="project-url">terratech.com</span>
+                      </div>
+                    </div>
+                    <div className="innovation-tech">
+                      <span className="tech-badge">HTML5</span>
+                      <span className="tech-badge">CSS3</span>
+                      <span className="tech-badge">JavaScript</span>
+                    </div>
+                    <div className="innovation-description">
+                      <p>Complete technology solutions company website with hardware and software services</p>
+                    </div>
+                    <div className="project-features">
+                      <span className="feature">🛠️ Service Showcase</span>
+                      <span className="feature">💻 Hardware Catalog</span>
+                      <span className="feature">📞 Contact Integration</span>
+                    </div>
+                    <div className="project-preview-frame">
+                      <div className="preview-header">
+                        <span className="preview-label">Live Preview</span>
+                        <a href="https://zapicojunredexter.github.io/terratech/" target="_blank" rel="noopener noreferrer" className="preview-link">
+                          🌐 Open Full Site
+                        </a>
+                      </div>
+                      <div className="iframe-wrapper">
+                        <iframe 
+                          src="https://zapicojunredexter.github.io/terratech/"
+                          title="TerraTech Solutions Preview"
+                          className="project-iframe"
+                          loading="lazy"
+                          style={{
+                            width: '1280px',
+                            height: '800px'
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="innovation-item">
+                  <div className="innovation-header">
+                    <span className="innovation-icon">🏖️</span>
+                    <h4>Saint Bernard Beach House</h4>
+                  </div>
+                  <div className="innovation-details">
+                    <div className="project-preview">
+                      <div className="preview-image">
+                        <span className="preview-icon">🏖️</span>
+                      </div>
+                      <div className="preview-info">
+                        <span className="project-type">Vacation Rental</span>
+                        <span className="project-url">saintbernardbeach.com</span>
+                      </div>
+                    </div>
+                    <div className="innovation-tech">
+                      <span className="tech-badge">HTML5</span>
+                      <span className="tech-badge">CSS3</span>
+                      <span className="tech-badge">Responsive</span>
+                    </div>
+                    <div className="innovation-description">
+                      <p>Luxury beach house rental website with golden hour theme and booking system</p>
+                    </div>
+                    <div className="project-features">
+                      <span className="feature">🌅 Golden Hour Theme</span>
+                      <span className="feature">🏠 Property Showcase</span>
+                      <span className="feature">📅 Reservation System</span>
+                    </div>
+                    <div className="project-preview-frame">
+                      <div className="preview-header">
+                        <span className="preview-label">Live Preview</span>
+                        <a href="https://zapicojunredexter.github.io/beach-house/" target="_blank" rel="noopener noreferrer" className="preview-link">
+                          🌐 Open Full Site
+                        </a>
+                      </div>
+                      <div className="iframe-wrapper">
+                        <iframe 
+                          src="https://zapicojunredexter.github.io/beach-house/"
+                          title="Saint Bernard Beach House Preview"
+                          className="project-iframe"
+                          loading="lazy"
+                          style={{
+                            width: '1280px',
+                            height: '800px'
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="innovation-item">
+                  <div className="innovation-header">
+                    <span className="innovation-icon">🍰</span>
+                    <h4>Patisserie Bakeshop</h4>
+                  </div>
+                  <div className="innovation-details">
+                    <div className="project-preview">
+                      <div className="preview-image">
+                        <span className="preview-icon">🍰</span>
+                      </div>
+                      <div className="preview-info">
+                        <span className="project-type">French Patisserie</span>
+                        <span className="project-url">bakeshop.com</span>
+                      </div>
+                    </div>
+                    <div className="innovation-tech">
+                      <span className="tech-badge">HTML5</span>
+                      <span className="tech-badge">CSS3</span>
+                      <span className="tech-badge">JavaScript</span>
+                    </div>
+                    <div className="innovation-description">
+                      <p>Exquisite French pastries and artisanal cakes with online ordering and holiday collections</p>
+                    </div>
+                    <div className="project-features">
+                      <span className="feature">🍰 Custom Cakes</span>
+                      <span className="feature">🎁 Holiday Collections</span>
+                      <span className="feature">📱 Online Ordering</span>
+                    </div>
+                    <div className="project-preview-frame">
+                      <div className="preview-header">
+                        <span className="preview-label">Live Preview</span>
+                        <a href="https://zapicojunredexter.github.io/bakeshop/" target="_blank" rel="noopener noreferrer" className="preview-link">
+                          🌐 Open Full Site
+                        </a>
+                      </div>
+                      <div className="iframe-wrapper">
+                        <iframe 
+                          src="https://zapicojunredexter.github.io/bakeshop/"
+                          title="Patisserie Bakeshop Preview"
+                          className="project-iframe"
+                          loading="lazy"
+                          style={{
+                            width: '1280px',
+                            height: '800px'
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="innovation-item">
+                  <div className="innovation-header">
+                    <span className="innovation-icon">🏗️</span>
+                    <h4>CE Portfolio</h4>
+                  </div>
+                  <div className="innovation-details">
+                    <div className="project-preview">
+                      <div className="preview-image">
+                        <span className="preview-icon">🏗️</span>
+                      </div>
+                      <div className="preview-info">
+                        <span className="project-type">Civil Engineering</span>
+                        <span className="project-url">ce-portfolio.com</span>
+                      </div>
+                    </div>
+                    <div className="innovation-tech">
+                      <span className="tech-badge">HTML5</span>
+                      <span className="tech-badge">CSS3</span>
+                      <span className="tech-badge">JavaScript</span>
+                    </div>
+                    <div className="innovation-description">
+                      <p>Professional civil engineering portfolio showcasing infrastructure projects and technical expertise</p>
+                    </div>
+                    <div className="project-features">
+                      <span className="feature">🏗️ Project Showcase</span>
+                      <span className="feature">📊 Technical Expertise</span>
+                      <span className="feature">📋 Professional Certifications</span>
+                    </div>
+                    <div className="project-preview-frame">
+                      <div className="preview-header">
+                        <span className="preview-label">Live Preview</span>
+                        <a href="https://zapicojunredexter.github.io/ce-portfolio/" target="_blank" rel="noopener noreferrer" className="preview-link">
+                          🌐 Open Full Site
+                        </a>
+                      </div>
+                      <div className="iframe-wrapper">
+                        <iframe 
+                          src="https://zapicojunredexter.github.io/ce-portfolio/"
+                          title="CE Portfolio Preview"
+                          className="project-iframe"
+                          loading="lazy"
+                          style={{
+                            width: '1280px',
+                            height: '800px'
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div className="innovation-item">
+                  <div className="innovation-header">
+                    <span className="innovation-icon">🎨</span>
+                    <h4>Interactive Portfolio</h4>
+                  </div>
+                  <div className="innovation-details">
+                    <div className="project-preview">
+                      <div className="preview-image">
+                        <span className="preview-icon">🎮</span>
+                      </div>
+                      <div className="preview-info">
+                        <span className="project-type">Portfolio</span>
+                        <span className="project-url">junre.dev</span>
+                      </div>
+                    </div>
+                    <div className="innovation-tech">
+                      <span className="tech-badge">React</span>
+                      <span className="tech-badge">TypeScript</span>
+                      <span className="tech-badge">CSS3</span>
+                    </div>
+                    <div className="innovation-description">
+                      <p>Mario-style interactive portfolio with parallax scrolling and animated character</p>
+                    </div>
+                    <div className="project-features">
+                      <span className="feature">🎮 Game-Style UI</span>
+                      <span className="feature">🌲 Parallax Background</span>
+                      <span className="feature">👤 Animated Character</span>
+                    </div>
+                    <div className="project-preview-frame">
+                      <div className="preview-header">
+                        <span className="preview-label">Current Portfolio</span>
+                        <span className="preview-link">🎮 You're viewing it now!</span>
+                      </div>
+                      <div className="portfolio-preview">
+                        <div className="preview-placeholder">
+                          <span className="preview-icon-large">🎮</span>
+                          <p>Mario-style Interactive Portfolio</p>
+                          <span className="preview-subtitle">Scroll to explore!</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="innovation-footer">
+                <span className="future-icon">🔮</span>
+                <p>Showcasing real projects with innovative design</p>
+              </div>
+            </div>
+          </div>
+
+
 
           {/* Skills Card - Enhanced */}
           <div className="content-card skills-card">
