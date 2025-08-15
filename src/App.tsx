@@ -248,7 +248,6 @@ function App() {
       for (let i = 1; i <= 6; i++) {
         const img = new Image();
         img.src = `${process.env.PUBLIC_URL}/person/person${i}.png`;
-        console.log(`Preloading person${i}.png`);
       }
     };
     
@@ -430,20 +429,19 @@ function App() {
   }, []);
 
   // Calculate game elements based on scroll with device-specific coefficients
-  const getWorldOffsetCoefficient = () => {
+  const getWorldOffsetCoefficient = useCallback(() => {
     // Fixed pixel positioning: furthest card at 5900px + card width (500px) + margin (200px) = 6600px
     // Consistent 700px gaps between cards, 300px from left edge
     // Added Innovation Hub card, removed Achievement Gallery
     
-    console.log('Current device width:', deviceWidth);
-
     // NOTE: ADJUST THIS VALUE TO CHANGE THE GAME WIDTH
     return -6600 + (deviceWidth || 0);
-  };
-  const gameWidth = getWorldOffsetCoefficient() * -1;
+  }, [deviceWidth]);
   
-  const worldOffset = scrollProgress * getWorldOffsetCoefficient();
-  const characterJump = Math.sin(scrollProgress * 20) * 5; // Bouncing effect
+  const gameWidth = useMemo(() => getWorldOffsetCoefficient() * -1, [getWorldOffsetCoefficient]);
+  
+  const worldOffset = useMemo(() => scrollProgress * getWorldOffsetCoefficient(), [scrollProgress, getWorldOffsetCoefficient]);
+  const characterJump = useMemo(() => Math.sin(scrollProgress * 20) * 5, [scrollProgress]); // Bouncing effect
 
       return (
       <div className="App">
