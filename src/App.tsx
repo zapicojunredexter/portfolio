@@ -1041,6 +1041,61 @@ function App() {
 
                 <div className="innovation-item">
                   <div className="innovation-header">
+                    <span className="innovation-icon">📊</span>
+                    <h4>Sales Analytics Dashboard</h4>
+                  </div>
+                  <div className="innovation-details">
+                    <div className="project-preview">
+                      <div className="preview-image">
+                        <span className="preview-icon">📊</span>
+                      </div>
+                      <div className="preview-info">
+                        <span className="project-type">Business Analytics</span>
+                        <span className="project-url">reports.vananaz.com</span>
+                      </div>
+                    </div>
+                    <div className="innovation-tech">
+                      <span className="tech-badge">HTML5</span>
+                      <span className="tech-badge">CSS3</span>
+                      <span className="tech-badge">JavaScript</span>
+                    </div>
+                    <div className="innovation-description">
+                      <p>Comprehensive sales analytics dashboard with revenue tracking, product performance, and regional distribution insights</p>
+                    </div>
+                    <div className="project-features">
+                      <span className="feature">📈 Revenue Analytics</span>
+                      <span className="feature">🌍 Regional Performance</span>
+                      <span className="feature">📊 Product Metrics</span>
+                    </div>
+                    <div className="project-preview-frame">
+                      <div className="preview-header">
+                        <span className="preview-label">Live Preview</span>
+                        <a href="https://zapicojunredexter.github.io/reports/" target="_blank" rel="noopener noreferrer" className="preview-link">
+                          🌐 Open Full Site
+                        </a>
+                      </div>
+                      <div className="iframe-wrapper">
+                        <iframe 
+                          src="https://zapicojunredexter.github.io/reports/"
+                          title="Sales Analytics Dashboard Preview"
+                          className="project-iframe"
+                          loading="lazy"
+                          style={{
+                            width: '1280px',
+                            height: '800px'
+                          }}
+                        />
+                        <div 
+                          className="iframe-overlay" 
+                          onClick={() => window.open('https://zapicojunredexter.github.io/reports/', '_blank')}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="innovation-item">
+                  <div className="innovation-header">
                     <span className="innovation-icon">⚡</span>
                     <h4>Pokedex</h4>
                   </div>
