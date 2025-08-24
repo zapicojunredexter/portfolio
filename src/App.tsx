@@ -46,6 +46,10 @@ function App() {
   const [showChatBubble, setShowChatBubble] = useState<boolean>(false);
   const [currentChatIndex, setCurrentChatIndex] = useState<number>(0);
   
+  // Copy notification state
+  const [showCopyNotification, setShowCopyNotification] = useState<boolean>(false);
+  const [copyNotificationText, setCopyNotificationText] = useState<string>('');
+  
   // Jump animation state
   const [isJumping, setIsJumping] = useState<boolean>(false);
   const [hasWelcomeJumped, setHasWelcomeJumped] = useState<boolean>(false);
@@ -219,6 +223,35 @@ function App() {
     const randomIndex = Math.floor(Math.random() * chatMessages.length);
     setCurrentChatIndex(randomIndex);
   }, [chatMessages]);
+
+  // Handle contact copy function
+  const handleContactCopy = useCallback(async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyNotificationText(`${type} copied to clipboard!`);
+      setShowCopyNotification(true);
+      
+      // Hide notification after 3 seconds
+      setTimeout(() => {
+        setShowCopyNotification(false);
+      }, 3000);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      
+      setCopyNotificationText(`${type} copied to clipboard!`);
+      setShowCopyNotification(true);
+      
+      setTimeout(() => {
+        setShowCopyNotification(false);
+      }, 3000);
+    }
+  }, []);
 
   // Enhanced message picker for instant display
   const showNewMessage = useCallback(() => {
@@ -1457,40 +1490,29 @@ function App() {
                 <p>Let's build something amazing together!</p>
               </div>
               <div className="contact-methods-grid">
-                <div className="contact-method">
+                <div className="contact-method" onClick={() => handleContactCopy('zapicojunredexter@gmail.com', 'Email')}>
                   <span className="contact-icon">📧</span>
                   <div className="contact-info">
                     <strong>Email</strong>
-                    <p>your.email@example.com</p>
+                    <p className="contact-url">zapicojunredexter@gmail.com</p>
                   </div>
+                  <div className="copy-hint">Click to copy</div>
                 </div>
-                <div className="contact-method">
+                <div className="contact-method" onClick={() => handleContactCopy('https://www.linkedin.com/in/junre-dexter-zapico-23a70413a/', 'LinkedIn')}>
                   <span className="contact-icon">💼</span>
                   <div className="contact-info">
                     <strong>LinkedIn</strong>
-                    <p>linkedin.com/in/yourprofile</p>
+                    <p className="contact-url">linkedin.com/in/junre-dexter-zapico-23a70413a</p>
                   </div>
+                  <div className="copy-hint">Click to copy</div>
                 </div>
-                <div className="contact-method">
+                <div className="contact-method" onClick={() => handleContactCopy('https://github.com/zapicojunredexter', 'GitHub')}>
                   <span className="contact-icon">🐙</span>
                   <div className="contact-info">
                     <strong>GitHub</strong>
-                    <p>github.com/yourusername</p>
+                    <p className="contact-url">github.com/zapicojunredexter</p>
                   </div>
-                </div>
-                <div className="contact-method">
-                  <span className="contact-icon">🌐</span>
-                  <div className="contact-info">
-                    <strong>Portfolio</strong>
-                    <p>yourportfolio.dev</p>
-                  </div>
-                </div>
-                <div className="contact-method">
-                  <span className="contact-icon">📱</span>
-                  <div className="contact-info">
-                    <strong>Phone</strong>
-                    <p>+1 (555) 123-4567</p>
-                  </div>
+                  <div className="copy-hint">Click to copy</div>
                 </div>
               </div>
               <div className="opportunities-section">
@@ -1613,6 +1635,16 @@ function App() {
             </div>
             <div className="chat-bubble-tail"></div>
             <div className="chat-bubble-hint">Click to change message</div>
+          </div>
+        )}
+
+        {/* Copy Notification Popup */}
+        {showCopyNotification && (
+          <div className="copy-notification">
+            <div className="copy-notification-content">
+              <span className="copy-icon">✅</span>
+              <span className="copy-text">{copyNotificationText}</span>
+            </div>
           </div>
         )}
       </div>
